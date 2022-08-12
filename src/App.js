@@ -1,7 +1,8 @@
 import './App.css';
 import {Header} from './components/Header'
 import { GlobalStyle } from './globalStyles';
-import {CreateProducts} from './components/createProducts'
+import {CreateProducts} from './components/CreateProducts'
+import {ShowProducts} from './components/ShowProducts'
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
     <GlobalStyle/>
     <Header/>
     <CreateProducts/>
+    <ShowProducts/>
    </>
   
   );
