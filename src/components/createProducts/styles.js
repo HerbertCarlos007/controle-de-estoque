@@ -23,8 +23,6 @@ export const ButtonsContainer = styled.div`
     gap: 20px;
     position: relative;
     top: 55px;
-   
-
 `;
 
 export const ButtonRegisterProducts = styled.button`

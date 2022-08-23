@@ -10,6 +10,5 @@ tbody > tr:nth-of-type(odd){
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
-    
+    margin-top: 50px;  
 }

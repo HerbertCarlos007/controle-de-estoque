@@ -10,8 +10,7 @@ export const Container = styled.div`
     align-items: center;
     position: relative;
     top: 50px;
-    padding: 50px;
-    
+    padding: 50px;   
 `;
 
 export const CardProducts = styled.div`
@@ -25,8 +24,6 @@ export const CardProducts = styled.div`
     right: 60px;
     bottom: 38px;
     padding: 5px;
-    
-
 `;
 
 export const TitleProduct = styled.h3`
@@ -68,4 +65,10 @@ export const EditButton = styled.button`
     border: none;
     background-color: transparent;
     color:  #412972;
+`;
+
+export const Table = styled.table`
+      width: 80%;
+      height: 150px;
+
 `;
