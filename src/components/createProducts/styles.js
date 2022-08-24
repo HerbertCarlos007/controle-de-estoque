@@ -4,6 +4,7 @@ export const Container = styled.div`
     width: 100%;
     height: 160px;
     display :inline-block;
+    
 `;
 
 export const Title = styled.h1`
@@ -43,3 +44,4 @@ export const ButtonDeleteStock = styled.button`
      border: 1px solid #412972;
      cursor: pointer;
 `;
+

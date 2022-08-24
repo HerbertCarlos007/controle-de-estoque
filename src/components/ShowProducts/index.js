@@ -42,8 +42,6 @@ export const ShowProducts = () => {
               <td>{product.saleValue}</td>
             </tr>
           )}
-
-
         </tbody>
       </table>
     </div>
