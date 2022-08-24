@@ -6,7 +6,6 @@ import { Modal } from '../Modal'
 export const CreateProducts = () => {
 
     const [name, setName] = useState('')
-    const [description, setDescription] = useState('')
     const [amount, setAmount] = useState('')
     const [brand, setBrand] = useState('')
     const [purchasePrice, setPurchasePrice] = useState('')
@@ -24,11 +23,6 @@ export const CreateProducts = () => {
     const handleName = (e) => {
         const textName = e.target.value
         setName(textName)
-    }
-
-    const handleDescription = (e) => {
-        const textDescription = e.target.value
-        setDescription(textDescription)
     }
 
     const handleAmount = (e) => {
@@ -56,7 +50,7 @@ export const CreateProducts = () => {
 
         try {
             await api.post(`${process.env.REACT_APP_BACKEND_URL}/products`,
-                { name, description, amount, brand, purchasePrice, saleValue }
+                { name, amount, brand, purchasePrice, saleValue }
             )
 
         } catch (error) {
@@ -75,7 +69,6 @@ export const CreateProducts = () => {
                 </C.ButtonsContainer>
                 <Modal show={showCreationModal} onClose={handleCloseCreationModal}>
                     <C.InputName placeholder='Nome' onChange={handleName}></C.InputName>
-                    <C.InputDescription placeholder='Descrição' onChange={handleDescription}></C.InputDescription>
                     <C.InputAmount placeholder='Quantidade' onChange={handleAmount}></C.InputAmount>
                     <C.InputBrand placeholder='Marca' onChange={handleBrand}></C.InputBrand>
                     <C.InputPurshacePrice placeholder='Valor de Custo' onChange={handlePurchasePrice}></C.InputPurshacePrice>
