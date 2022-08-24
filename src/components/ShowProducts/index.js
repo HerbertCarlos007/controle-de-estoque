@@ -23,7 +23,6 @@ export const ShowProducts = () => {
           <tr>
             <th scope="col">ID</th>
             <th scope="col">Nome</th>
-            <th scope="col">Descriçao</th>
             <th scope="col">Quantidade</th>
             <th scope="col">Marca</th>
             <th scope="col">Preço de custo</th>
@@ -35,7 +34,6 @@ export const ShowProducts = () => {
             <tr>
               <th scope="row">{index + 1}</th>
               <td>{product.name}</td>
-              <td>{product.description}</td>
               <td>{product.amount}</td>
               <td>{product.brand}</td>
               <td>{product.purchasePrice}</td>

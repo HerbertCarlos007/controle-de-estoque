@@ -13,12 +13,12 @@ export const Wrapper = styled.div`
 
 export const Container = styled.div`
     z-index: 5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 400px;
+    height: 420px;
     width: 400px;
     background-color: white;
+    border-radius: 8px;
+    border: 1px solid #412972;
+    box-shadow: 2px 2px 5px black;
 `
 
 export const Translucent = styled.div`
@@ -31,3 +31,4 @@ export const Translucent = styled.div`
     left: 0;
     opacity: 50%;
 `
+
