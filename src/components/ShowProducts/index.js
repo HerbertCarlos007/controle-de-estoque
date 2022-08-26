@@ -18,6 +18,16 @@ export const ShowProducts = () => {
     setProducts(response.data)
   }
 
+  const deleteProducts = async (id) => {
+    try {
+      console.log({id})
+      await api.delete(`${process.env.REACT_APP_BACKEND_URL}/products/${id}`)
+    } catch (error) {
+      console.log(error)
+    }
+    await getProducts()
+  }
+
   return (
     <div className='container'>
       <table class="table">
@@ -41,7 +51,7 @@ export const ShowProducts = () => {
               <td><center>R$ {product.purchasePrice}</center></td>
               <td><center>R$ {product.saleValue}</center></td>
               <td><center><FiEdit/></center></td>
-              <td><center><AiOutlineDelete/></center></td>
+              <td><center><AiOutlineDelete onClick={() => deleteProducts(product._id)}/></center></td>
             </tr>
           )}
         </tbody>
