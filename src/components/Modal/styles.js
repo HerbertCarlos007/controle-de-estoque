@@ -13,8 +13,8 @@ export const Wrapper = styled.div`
 
 export const Container = styled.div`
     z-index: 5;
-    height: 420px;
-    width: 400px;
+    height: 370px;
+    width: 380px;
     background-color: white;
     border-radius: 8px;
     border: 1px solid #412972;

@@ -59,6 +59,9 @@ export const CreateProducts = () => {
 
     }
 
+    
+    
+
     return (
         <>
             <C.Container>
@@ -72,7 +75,6 @@ export const CreateProducts = () => {
                     <C.InputAmount placeholder='Quantidade' onChange={handleAmount}></C.InputAmount>
                     <C.InputBrand placeholder='Marca' onChange={handleBrand}></C.InputBrand>
                     <C.InputPurshacePrice placeholder='Valor de Custo' onChange={handlePurchasePrice}></C.InputPurshacePrice>
-                    <C.InputSaleValue placeholder='Preço de venda' onChange={handleSaleValue}></C.InputSaleValue>
                     <C.ButtonRegisterModal onClick={registerProducts}>Cadastrar</C.ButtonRegisterModal>
                 </Modal>
 

@@ -12,3 +12,30 @@ tbody > tr:nth-of-type(odd){
     align-items: center;
     margin-top: 50px;  
 }
+
+.inputs-modal {
+    border: 1px solid #412972;
+    width: 350px;
+    height: 40px;
+    margin: 10px;
+    border-radius: 5px;
+    position: relative;
+    left: 6px;
+    text-align: center;
+}
+
+.button-modal-update-produto {
+    width: 180px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #412972;
+    border: 1px solid #412972;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 30px;
+    left: 105px;
+}

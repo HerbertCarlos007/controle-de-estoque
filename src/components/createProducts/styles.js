@@ -54,7 +54,7 @@ export const InputName = styled.input`
     margin: 10px;
     border-radius: 5px;
     position: relative;
-    left: 12px;
+    left: 5px;
     text-align: center;
 `
 
@@ -65,7 +65,7 @@ export const InputDescription = styled.input`
     margin: 10px;
     border-radius: 5px;
     position: relative;
-    left: 12px;
+    left: 5px;
     text-align: center;
 `
 
@@ -76,7 +76,7 @@ export const InputAmount = styled.input`
     margin: 10px;
     border-radius: 5px;
     position: relative;
-    left: 12px;
+    left: 5px;
     text-align: center;
 `
 
@@ -87,7 +87,7 @@ export const InputBrand = styled.input`
     margin: 10px;
     border-radius: 5px;
     position: relative;
-    left: 12px;
+    left: 5px;
     text-align: center;
 `
 
@@ -98,7 +98,7 @@ export const InputPurshacePrice = styled.input`
     margin: 10px;
     border-radius: 5px;
     position: relative;
-    left: 12px;
+    left: 5px;
     text-align: center;
 `
 
@@ -125,6 +125,7 @@ export const ButtonRegisterModal = styled.button`
     justify-content: center;
     align-items: center;
     position: relative;
-    left: 110px;
+    left: 105px;
+    top: 25px;
 `
 
