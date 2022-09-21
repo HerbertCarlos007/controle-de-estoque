@@ -1,8 +1,8 @@
 import './styleTable.css'
 import api from '../../services/api'
 import { useState, useEffect } from 'react'
-import {FiEdit} from 'react-icons/fi'
-import {AiOutlineDelete} from 'react-icons/ai'
+import { FiEdit } from 'react-icons/fi'
+import { AiOutlineDelete } from 'react-icons/ai'
 
 export const ShowProducts = () => {
 
@@ -14,13 +14,12 @@ export const ShowProducts = () => {
 
   const getProducts = async () => {
     const response = await api.get(`${process.env.REACT_APP_BACKEND_URL}/products`)
-    console.log(response.data)
-    setProducts(response.data)
+    setProducts(response.data.products)
   }
 
   const deleteProducts = async (id) => {
     try {
-      console.log({id})
+
       await api.delete(`${process.env.REACT_APP_BACKEND_URL}/products/${id}`)
     } catch (error) {
       console.log(error)
@@ -30,11 +29,12 @@ export const ShowProducts = () => {
 
   return (
     <div className='container'>
-      <table class="table">
+      <table className="table">
         <thead>
           <tr>
             <th scope="col"><center>ID</center></th>
             <th scope="col"><center>Nome</center></th>
+            <th scope="col"><center>Quantiade</center></th>
             <th scope="col"><center>Marca</center></th>
             <th scope="col"><center>Preço de custo</center></th>
             <th scope="col"><center>Preço de venda</center></th>
@@ -43,15 +43,16 @@ export const ShowProducts = () => {
           </tr>
         </thead>
         <tbody>
-          {products.map((product, index) =>
+          {products && products.map((product, index) =>
             <tr>
               <th scope="row"><center>{index + 1}</center></th>
               <td><center>{product.name}</center></td>
+              <td><center>{product.amount}</center></td>
               <td><center>{product.brand}</center></td>
               <td><center>R$ {product.purchasePrice}</center></td>
-              <td><center>R$ {product.saleValue}</center></td>
-              <td><center><FiEdit/></center></td>
-              <td><center><AiOutlineDelete onClick={() => deleteProducts(product._id)}/></center></td>
+              <td><center>R$ {product.saleValue.toFixed(2) }</center></td>
+              <td><center><FiEdit /></center></td>
+              <td><center><AiOutlineDelete onClick={() => deleteProducts(product.id)} /></center></td>
             </tr>
           )}
         </tbody>
