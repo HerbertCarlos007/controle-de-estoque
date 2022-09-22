@@ -12,26 +12,15 @@ export const ShowProducts = () => {
   const [brand, setBrand] = useState('')
   const [purchasePrice, setPurchasePrice] = useState('')
   const [showCreationModal, setShowCreationModal] = useState(false)
-
-
-
-  const [products, setProducts] = useState([])
-
-  const allProductsRef = useRef()
+  const [selectedId, setSelectedId] = useState('')
 
   useEffect(() => {
     getProducts()
   }, [])
 
-  const getProducts = async () => {
-    try {
-      const response = await api.get(`${process.env.REACT_APP_BACKEND_URL}/products`)
-      setProducts(response.data.products)
-      allProductsRef.current = response.data
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  const [products, setProducts] = useState([])
+
+  const allProductsRef = useRef()
 
   const handleCreationModal = () => {
     setShowCreationModal(true)
@@ -40,6 +29,37 @@ export const ShowProducts = () => {
   const handleCloseCreationModal = () => {
     setShowCreationModal(false)
   }
+
+  const handleName = (e) => {
+    const textName = e.target.value
+    setName(textName)
+  }
+
+  const handleAmount = (e) => {
+    const textAmount = e.target.value
+    setAmount(textAmount)
+  }
+
+  const handleBrand = (e) => {
+    const textBrand = e.target.value
+    setBrand(textBrand)
+  }
+
+  const handlePurchasePrice = (e) => {
+    const textPurchasePrice = e.target.value
+    setPurchasePrice(textPurchasePrice)
+  }
+
+  const getProducts = async () => {
+    try {
+      const response = await api.get(`${process.env.REACT_APP_BACKEND_URL}/products`)
+      setProducts(response.data.products)
+      allProductsRef.current = response.data.products
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 
   const deleteProducts = async (id) => {
     try {
@@ -54,25 +74,31 @@ export const ShowProducts = () => {
   const getEachProducts = async (id) => {
     try {
       const response = await api.get(`${process.env.REACT_APP_BACKEND_URL}/products/${id}`)
-      const data = response.data.products
+      const data = response.data
       setName(data.name)
       setAmount(data.amount)
       setBrand(data.brand)
       setPurchasePrice(data.purchasePrice)
+      setSelectedId(id)
     } catch (error) {
 
     }
   }
 
   const updateProducts = async (id) => {
-
     try {
       await api.put(`${process.env.REACT_APP_BACKEND_URL}/products/${id}`, {
-
+        id,
+        name,
+        amount,
+        brand,
+        purchasePrice
       })
     } catch (error) {
       console.log(error)
     }
+    handleCloseCreationModal()
+    getProducts()
   }
 
 
@@ -100,7 +126,7 @@ export const ShowProducts = () => {
               <td><center>{product.brand}</center></td>
               <td><center>R$ {product.purchasePrice.toFixed(2)}</center></td>
               <td><center>R$ {product.saleValue.toFixed(2)}</center></td>
-              <td onClick={handleCreationModal}><center><FiEdit /></center></td>
+              <td onClick={() => getEachProducts(product.id)} ><center><FiEdit onClick={handleCreationModal} /></center></td>
               <td><center><AiOutlineDelete onClick={() => deleteProducts(product.id)} /></center></td>
             </tr>
           )}
@@ -109,11 +135,11 @@ export const ShowProducts = () => {
 
       <Modal show={showCreationModal} onClose={handleCloseCreationModal}>
         <div>
-          <input type='text' className='inputs-modal' placeholder='Nome'/>
-          <input type='text' className='inputs-modal' placeholder='Quantidade'/>
-          <input type='text' className='inputs-modal' placeholder='Marca'/>
-          <input type='text' className='inputs-modal' placeholder='Preço de custo'/>
-          <button className='button-modal-update-produto'>Atualizar Produto</button>
+          <input type='text' className='inputs-modal' placeholder='Nome' onChange={handleName} value={name} />
+          <input type='text' className='inputs-modal' placeholder='Quantidade' onChange={handleAmount} value={amount} />
+          <input type='text' className='inputs-modal' placeholder='Marca' onChange={handleBrand} value={brand} />
+          <input type='text' className='inputs-modal' placeholder='Preço de custo' onChange={handlePurchasePrice} value={purchasePrice} />
+          <button className='button-modal-update-produto' onClick={() => updateProducts(selectedId)}>Atualizar Produto</button>
         </div>
       </Modal>
     </div>
