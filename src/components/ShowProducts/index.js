@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { FiEdit } from 'react-icons/fi'
 import { AiOutlineDelete } from 'react-icons/ai'
 import { Modal } from '../Modal'
+import Swal from 'sweetalert2'
 
 export const ShowProducts = () => {
 
@@ -60,17 +61,6 @@ export const ShowProducts = () => {
     }
   }
 
-
-  const deleteProducts = async (id) => {
-    try {
-      await api.delete(`${process.env.REACT_APP_BACKEND_URL}/products/${id}`)
-
-    } catch (error) {
-      console.log(error)
-    }
-    await getProducts()
-  }
-
   const getEachProducts = async (id) => {
     try {
       const response = await api.get(`${process.env.REACT_APP_BACKEND_URL}/products/${id}`)
@@ -87,19 +77,53 @@ export const ShowProducts = () => {
 
   const updateProducts = async (id) => {
     try {
-      await api.put(`${process.env.REACT_APP_BACKEND_URL}/products/${id}`, {
+     const response = await api.put(`${process.env.REACT_APP_BACKEND_URL}/products/${id}`, {
         id,
         name,
         amount,
         brand,
         purchasePrice
       })
+
+      if(response.status === 204) {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Produto atualizado com sucesso!',
+          showConfirmButton: false,
+          timer: 1500
+      })
+      }
+
     } catch (error) {
       console.log(error)
     }
     handleCloseCreationModal()
     getProducts()
   }
+
+  
+
+  const deleteProducts = async (id) => {
+    try {
+      const response = await api.delete(`${process.env.REACT_APP_BACKEND_URL}/products/${id}`)
+
+      if(response.status === 204) {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Produto deletado com sucesso!',
+          showConfirmButton: false,
+          timer: 1500
+      })
+      }
+
+    } catch (error) {
+      console.log(error)
+    }
+    await getProducts()
+  }
+
 
 
   return (

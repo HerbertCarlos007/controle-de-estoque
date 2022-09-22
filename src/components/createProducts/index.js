@@ -2,6 +2,7 @@ import * as C from './styles'
 import { useState } from 'react'
 import api from '../../services/api'
 import { Modal } from '../Modal'
+import Swal from 'sweetalert2'
 
 export const CreateProducts = () => {
 
@@ -9,7 +10,6 @@ export const CreateProducts = () => {
     const [amount, setAmount] = useState('')
     const [brand, setBrand] = useState('')
     const [purchasePrice, setPurchasePrice] = useState('')
-    const [saleValue, setSaleValue] = useState('')
     const [showCreationModal, setShowCreationModal] = useState(false)
 
     const handleCreationModal = () => {
@@ -40,18 +40,27 @@ export const CreateProducts = () => {
         setPurchasePrice(textPurchasePrice)
     }
 
-    const handleSaleValue = (e) => {
-        const textSaleValue = e.target.value
-        setSaleValue(textSaleValue)
-    }
+
 
     const registerProducts = async (e) => {
         e.preventDefault()
 
         try {
-            await api.post(`${process.env.REACT_APP_BACKEND_URL}/products`,
-                { name, amount, brand, purchasePrice, saleValue }
+            const response = await api.post(`${process.env.REACT_APP_BACKEND_URL}/products`,
+                { name, amount, brand, purchasePrice }
             )
+
+            if(response.status === 201) {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Produto cadastrado com sucesso!',
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then(
+                    handleCloseCreationModal()
+                )
+            }
 
         } catch (error) {
             console.log(error)
@@ -59,8 +68,8 @@ export const CreateProducts = () => {
 
     }
 
-    
-    
+
+
 
     return (
         <>
