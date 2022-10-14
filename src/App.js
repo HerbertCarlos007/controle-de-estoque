@@ -1,21 +1,26 @@
 import './App.css';
-import {Header} from './components/Header'
 import { GlobalStyle } from './globalStyles';
-import {CreateProducts} from './components/CreateProducts'
-import {ShowProducts} from './components/ShowProducts'
+import { ShowProducts } from './components/ShowProducts'
+import { HomePageStore } from './components/HomePageStore'
 
-import {useState} from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+
+
 
 function App() {
 
   return (
-   <>
-    <GlobalStyle/>
-    <Header/>
-    <CreateProducts/>
-    <ShowProducts/>
-   </>
-  
+    <>
+      <Router>
+      <GlobalStyle />
+
+        <Routes>
+          <Route path='/inventory' element={<ShowProducts/>}></Route>
+          <Route path='/store' element={<HomePageStore/>}></Route>
+        </Routes>
+      </Router>
+    </>
+
   );
 }
 

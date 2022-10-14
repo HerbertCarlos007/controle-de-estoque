@@ -3,6 +3,7 @@ import { useState } from 'react'
 import api from '../../services/api'
 import { Modal } from '../Modal'
 import Swal from 'sweetalert2'
+import { Header } from '../Header'
 
 export const CreateProducts = () => {
 
@@ -50,7 +51,7 @@ export const CreateProducts = () => {
                 { name, amount, brand, purchasePrice }
             )
 
-            if(response.status === 201) {
+            if (response.status === 201) {
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
@@ -65,15 +66,13 @@ export const CreateProducts = () => {
         } catch (error) {
             console.log(error)
         }
-
     }
-
-
-
 
     return (
         <>
+        <Header/>
             <C.Container>
+
                 <C.Title>Lista de Produtos</C.Title>
                 <C.ButtonsContainer>
                     <C.ButtonRegisterProducts onClick={handleCreationModal}>Cadastrar Produto</C.ButtonRegisterProducts>

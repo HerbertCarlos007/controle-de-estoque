@@ -15,4 +15,20 @@ export const TitleHeader = styled.h3`
     top: 15px;  
 `;
 
+export const LeftSide = styled.div`
+    display: flex;
+    justify-content: end;
+    margin-right: 15px;
+    position: relative;
+    bottom: 20px;
+    gap: 30px;
+`
+
+export const textNavBar = styled.span`
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+
+`
+
 
