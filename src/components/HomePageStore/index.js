@@ -11,11 +11,14 @@ export const HomePageStore = () => {
 
 
             <C.Container>
-                <C.CardsProducts>aaa</C.CardsProducts>
-                <C.CardsProducts>aaa</C.CardsProducts>
-                <C.CardsProducts>aaa</C.CardsProducts>
-                <C.CardsProducts>aaa</C.CardsProducts>
-                <C.CardsProducts>aaa</C.CardsProducts>
+                <C.CardsProducts>
+                    <C.TopContainerCard>ff</C.TopContainerCard>
+
+                    <C.CenterContainerCard>dasd</C.CenterContainerCard>
+
+                    <C.DownContainerCard>ddd</C.DownContainerCard>
+                </C.CardsProducts>
+              
             </C.Container>
         </>
     )
