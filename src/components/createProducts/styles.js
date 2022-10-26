@@ -57,6 +57,17 @@ export const InputName = styled.input`
     text-align: center;
 `
 
+export const InputImageUrl = styled.input`
+    border: 1px solid #412972;
+    width: 350px;
+    height: 40px;
+    margin: 10px;
+    border-radius: 5px;
+    position: relative;
+    left: 5px;
+    text-align: center;
+`
+
 export const InputDescription = styled.input`
     border: 1px solid #412972;
     width: 350px;

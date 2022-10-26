@@ -143,7 +143,7 @@ export const ShowProducts = () => {
             <tr>
               <th scope="col"><center>ID</center></th>
               <th scope="col"><center>Nome</center></th>
-              <th scope="col"><center>Quantiade</center></th>
+              <th scope="col"><center>Quantidade</center></th>
               <th scope="col"><center>Marca</center></th>
               <th scope="col"><center>Preço de custo</center></th>
               <th scope="col"><center>Preço de venda</center></th>

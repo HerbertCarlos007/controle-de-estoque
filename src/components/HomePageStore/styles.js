@@ -11,8 +11,12 @@ export const Container = styled.div`
     grid-template-columns: repeat(3, 1fr);
     flex-wrap: wrap;
     justify-items: center;
-    gap: 50px 0;
+    gap: 50px 0px;
     margin-top: 100px;
+    
+    @media (min-width: 1600px){
+        grid-template-columns: repeat(4, 1fr);
+    }
 
 `
 
