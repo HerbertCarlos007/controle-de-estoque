@@ -7,6 +7,10 @@ export const Header = styled.div`
 `
 
 export const Container = styled.div`
+
+`
+
+export const ContainerProducts = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     flex-wrap: wrap;
@@ -21,10 +25,11 @@ export const Container = styled.div`
 `
 
 export const CardsProducts = styled.div`
-   background-color: green;
-   width: 300px;
-   height: 450px;
+   background-color: white;
+   width: 260px;
+   height: 400px;
    border-radius: 8px;
+   box-shadow: 1px 1px 5px black;
   
 `
 
@@ -33,7 +38,6 @@ export const HeaderSideLeft = styled.div`
     margin-left: 30px;
 
 `
-
 
 export const HeaderSideRight = styled.div`
     display: flex;
@@ -47,16 +51,33 @@ export const TextCard = styled.span`
 export const TopContainerCard = styled.div`
     display: flex;
     justify-content: center;
+    margin-top: 15px;
 `
 
 export const CenterContainerCard = styled.div`
     display: flex;
-    justify-content: center;
-    margin-top: 120px;
+    margin-top: 10px;
+    margin-left: 20px;
+
 `
 
 export const DownContainerCard = styled.div`
     display: flex;
-    margin-top: 180px;
-    margin-left: 20px;
+    margin-left: 19px;
+    margin-top: 60px;
+`
+
+export const textTitle = styled.h3`
+
+`
+
+export const TextPrice = styled.span`
+    font-size: 20px;
+    font-weight: bold;
+`
+
+export const ImageProduct = styled.img`
+    border-radius: 8px;
+    max-width: 200px;
+    
 `

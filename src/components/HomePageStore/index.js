@@ -22,7 +22,7 @@ export const HomePageStore = () => {
     }
 
     return (
-        <>
+        <C.Container>
             <C.Header>
                 <C.HeaderSideLeft>aaa</C.HeaderSideLeft>
 
@@ -30,19 +30,19 @@ export const HomePageStore = () => {
             </C.Header>
 
 
-            <C.Container>
+            <C.ContainerProducts>
                 {allProducts.map((product) => 
                       <C.CardsProducts>
-                      <C.TopContainerCard>{product.name}</C.TopContainerCard>
+                      <C.TopContainerCard><C.ImageProduct src={product.imageUrl}/></C.TopContainerCard>
   
-                      <C.CenterContainerCard>dasd</C.CenterContainerCard>
+                      <C.CenterContainerCard><C.textTitle>{product.name}</C.textTitle></C.CenterContainerCard>
   
-                      <C.DownContainerCard>{product.saleValue.toFixed(2)}</C.DownContainerCard>
+                      <C.DownContainerCard><C.TextPrice>R$ {product.saleValue.toFixed(2)}</C.TextPrice></C.DownContainerCard>
                   </C.CardsProducts>
                 )}
               
 
-            </C.Container>
-        </>
+            </C.ContainerProducts>
+        </C.Container>
     )
 }
