@@ -29,7 +29,8 @@ export const CardsProducts = styled.div`
    width: 260px;
    height: 400px;
    border-radius: 8px;
-   box-shadow: 1px 1px 5px black;
+   box-shadow: 1px 2px 3px black;
+   cursor: pointer;
   
 `
 
@@ -57,17 +58,17 @@ export const TopContainerCard = styled.div`
 export const CenterContainerCard = styled.div`
     display: flex;
     margin-top: 10px;
-    margin-left: 20px;
+    margin-left: 10px;
 
 `
 
 export const DownContainerCard = styled.div`
     display: flex;
-    margin-left: 19px;
+    margin-left: 10px;
     margin-top: 60px;
 `
 
-export const textTitle = styled.h3`
+export const textTitle = styled.h4`
 
 `
 

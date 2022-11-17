@@ -2,6 +2,7 @@ import './App.css';
 import { GlobalStyle } from './globalStyles';
 import { ShowProducts } from './components/ShowProducts'
 import { HomePageStore } from './components/HomePageStore'
+import { ShowEachProduct } from './components/ShowEachProduct'
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path='/inventory' element={<ShowProducts/>}></Route>
           <Route path='/store' element={<HomePageStore/>}></Route>
+          <Route path='/product/:id' element={<ShowEachProduct/>}></Route>
         </Routes>
       </Router>
     </>
