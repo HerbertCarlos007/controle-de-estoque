@@ -33,7 +33,7 @@ export const HomePageStore = () => {
 
     return (
         <C.Container>
-            <Navbar key={false} bg="light" expand={false} className="mb-3">
+            <Navbar key={false} bg="light" expand={false} >
                 <Container fluid>
                     <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${false}`} />
                     <Navbar.Brand href="#">Bryan Store</Navbar.Brand>

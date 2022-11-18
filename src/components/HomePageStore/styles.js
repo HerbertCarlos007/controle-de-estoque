@@ -16,8 +16,8 @@ export const ContainerProducts = styled.div`
     flex-wrap: wrap;
     justify-items: center;
     gap: 50px 0px;
-    margin-top: 100px;
-    
+    /* margin-top: 100px; */
+    background-color: gray;
     @media (min-width: 1600px){
         grid-template-columns: repeat(4, 1fr);
     }
