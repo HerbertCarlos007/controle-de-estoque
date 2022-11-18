@@ -138,7 +138,7 @@ export const ShowProducts = () => {
     <>
       <CreateProducts />
       <div className='container'>
-        <table className="table">
+        <table className="table responsive">
           <thead>
             <tr>
               <th scope="col"><center>ID</center></th>

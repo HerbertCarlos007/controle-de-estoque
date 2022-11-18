@@ -10,7 +10,7 @@ export const ShowEachProduct = () => {
     const [imageUrl, setImageUrl] = useState('')
     const [amount, setAmount] = useState('')
     const [brand, setBrand] = useState('')
-    const [purchasePrice, setPurchasePrice] = useState('')
+    const [salePrice, setSalePrice] = useState('')
 
 
     useEffect(() => {
@@ -23,13 +23,13 @@ export const ShowEachProduct = () => {
         try {
             const response = await api.get(`${process.env.REACT_APP_BACKEND_URL}/products/${id}`)
             const data = response.data
-            setName(data.name)
-            setDescription(data.description)
-            setImageUrl(data.imageUrl)
-            setAmount(data.amount)
-            setBrand(data.brand)
-            setPurchasePrice(data.purchasePrice)
-
+            const productData = data.dataValues
+            setName(productData.name)
+            setDescription(productData.description)
+            setImageUrl(productData.imageUrl)
+            setAmount(productData.amount)
+            setBrand(productData.brand)
+            setSalePrice(String(data.saleValue).replace('.',''))
         } catch (error) {
 
         }
@@ -43,7 +43,7 @@ export const ShowEachProduct = () => {
                     <C.ProductImage src={imageUrl}></C.ProductImage>
                     <C.RightSideContainer>
                         <C.TitleProduct>{name}</C.TitleProduct>
-                        <C.TextPrice>R$: {purchasePrice}</C.TextPrice>
+                        <C.TextPrice>R$: {salePrice}</C.TextPrice>
                         <C.ButtonBuy>Comprar</C.ButtonBuy>
                     </C.RightSideContainer>
                 </C.CardEachProduct>
