@@ -7,19 +7,25 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import { useNavigate } from 'react-router-dom'
 
 
 import * as C from './styles'
-
 import api from '../../services/api'
 
 export const HomePageStore = () => {
 
     const [allProducts, setAllProducts] = useState([])
 
+    const navigate = useNavigate()
+
     useEffect(() => {
         showAllProducts()
     }, [])
+
+    const navigateToInventory = () => {
+        navigate('/inventory')
+    }
 
     const showAllProducts = async () => {
         try {
@@ -50,7 +56,7 @@ export const HomePageStore = () => {
                         <Offcanvas.Body>
                             <Nav className="justify-content-end flex-grow-1 pe-3">
                                 <Nav.Link href="#action1">Minha Loja</Nav.Link>
-                                <Nav.Link href="#action2">Estoque</Nav.Link>
+                                <Nav.Link href="#action2" onClick={navigateToInventory}>Estoque</Nav.Link>
                                 <NavDropdown
                                     title="Perfil"
                                     id={`offcanvasNavbarDropdown-expand-${false}`}
