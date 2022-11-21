@@ -64,13 +64,13 @@ export const HomePageStore = () => {
             </Navbar>
             <C.ContainerProducts>
                 {allProducts && allProducts.map((product) =>
-                    <Link to={`/product/${product.id}`} state={{ id: product.id }}>
+                    <Link style={{textDecoration: 'none', color: 'black'}} to={`/product/${product.id}`} state={{ id: product.id }}>
                         <C.CardsProducts>
                             <C.TopContainerCard><C.ImageProduct src={product.imageUrl} /></C.TopContainerCard>
 
                             <C.CenterContainerCard><C.textTitle>{product.name}</C.textTitle></C.CenterContainerCard>
 
-                            <C.DownContainerCard><C.TextPrice>R$ {product.saleValue.toFixed(3)}</C.TextPrice></C.DownContainerCard>
+                            <C.DownContainerCard><C.TextPrice>R$ {product.saleValue}</C.TextPrice></C.DownContainerCard>
                         </C.CardsProducts>
                     </Link>
                 )}

@@ -17,7 +17,7 @@ export const ContainerProducts = styled.div`
     justify-items: center;
     gap: 50px 0px;
     /* margin-top: 100px; */
-    background-color: gray;
+    background-color: #f2f2f2;
     @media (min-width: 1600px){
         grid-template-columns: repeat(4, 1fr);
     }
@@ -27,7 +27,7 @@ export const ContainerProducts = styled.div`
 export const CardsProducts = styled.div`
    background-color: white;
    width: 260px;
-   height: 400px;
+   height: 300px;
    border-radius: 8px;
    box-shadow: 1px 2px 3px black;
    cursor: pointer;
@@ -65,10 +65,11 @@ export const CenterContainerCard = styled.div`
 export const DownContainerCard = styled.div`
     display: flex;
     margin-left: 10px;
-    margin-top: 60px;
+    margin-top: 30px;
 `
 
 export const textTitle = styled.h4`
+    text-decoration: none;
 
 `
 

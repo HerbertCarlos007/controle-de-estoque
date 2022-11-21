@@ -17,7 +17,7 @@ function App() {
 
         <Routes>
           <Route path='/inventory' element={<ShowProducts/>}></Route>
-          <Route path='/store' element={<HomePageStore/>}></Route>
+          <Route exact path='/' element={<HomePageStore/>}></Route>
           <Route path='/product/:id' element={<ShowEachProduct/>}></Route>
         </Routes>
       </Router>
