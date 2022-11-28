@@ -7,17 +7,18 @@ export const Header = styled.div`
 `
 
 export const Container = styled.div`
-
+     background-color: #f2f2f2;
+     height: 100vh;
 `
 
 export const ContainerProducts = styled.div`
+margin-top: 30px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     flex-wrap: wrap;
     justify-items: center;
     gap: 50px 0px;
-    /* margin-top: 100px; */
-    background-color: #f2f2f2;
+   
     @media (min-width: 1600px){
         grid-template-columns: repeat(4, 1fr);
     }
@@ -26,12 +27,11 @@ export const ContainerProducts = styled.div`
 
 export const CardsProducts = styled.div`
    background-color: white;
-   width: 260px;
+   width: 300px;
    height: 300px;
+    padding: 30px;
    border-radius: 8px;
    box-shadow: 1px 2px 3px black;
-   cursor: pointer;
-  
 `
 
 export const HeaderSideLeft = styled.div`
@@ -50,26 +50,28 @@ export const TextCard = styled.span`
     color: black;
 `
 export const TopContainerCard = styled.div`
-    display: flex;
-    justify-content: center;
-    margin-top: 15px;
+   
+   justify-content: center;
+   align-items: center;
+  
 `
 
 export const CenterContainerCard = styled.div`
-    display: flex;
-    margin-top: 10px;
-    margin-left: 10px;
+    position: relative;
+    right: 20px;
+   
 
 `
 
 export const DownContainerCard = styled.div`
     display: flex;
-    margin-left: 10px;
-    margin-top: 30px;
+   justify-content: center;
+   margin-top: 15px;
 `
 
-export const textTitle = styled.h4`
-    text-decoration: none;
+export const textTitle = styled.span`
+    font-size: 17px;
+    white-space: nowrap;
 
 `
 
@@ -81,5 +83,18 @@ export const TextPrice = styled.span`
 export const ImageProduct = styled.img`
     border-radius: 8px;
     max-width: 200px;
+    position: relative;
+    bottom: 20px;
+    
+    
+`
+
+export const ButtonAddToCart = styled.button`
+    font-size: 18px;
+    border-radius: 8px;
+    width: 200px;
+    height: 30px;
+    background-color:  #412972;
+    color: white;
     
 `

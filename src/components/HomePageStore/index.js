@@ -8,6 +8,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { useNavigate } from 'react-router-dom'
+import { AiOutlineShoppingCart } from 'react-icons/ai'
 
 
 import * as C from './styles'
@@ -39,10 +40,13 @@ export const HomePageStore = () => {
 
     return (
         <C.Container>
-            <Navbar key={false} bg="light" expand={false} >
-                <Container fluid>
+            <Navbar key={false} bg="light" expand={false}  >
+                <Container fluid >
                     <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${false}`} />
-                    <Navbar.Brand href="#">Bryan Store</Navbar.Brand>
+                    <Navbar.Brand href="#">Bryan Store</Navbar.Brand >
+                    <Navbar.Brand href="#">
+                        <AiOutlineShoppingCart />
+                    </Navbar.Brand>
                     <Navbar.Offcanvas
                         id={`offcanvasNavbar-expand-${false}`}
                         aria-labelledby={`offcanvasNavbarLabel-expand-${false}`}
@@ -70,15 +74,20 @@ export const HomePageStore = () => {
             </Navbar>
             <C.ContainerProducts>
                 {allProducts && allProducts.map((product) =>
-                    <Link style={{textDecoration: 'none', color: 'black'}} to={`/product/${product.id}`} state={{ id: product.id }}>
-                        <C.CardsProducts>
-                            <C.TopContainerCard><C.ImageProduct src={product.imageUrl} /></C.TopContainerCard>
+                    <C.CardsProducts>
+                        <C.ImageProduct src={product.imageUrl} />
 
-                            <C.CenterContainerCard><C.textTitle>{product.name}</C.textTitle></C.CenterContainerCard>
+                        <C.CenterContainerCard>
+                            <C.textTitle>{product.name}</C.textTitle>
+                            <br />
+                            <C.TextPrice>R$ {product.saleValue}</C.TextPrice>
+                        </C.CenterContainerCard>
 
-                            <C.DownContainerCard><C.TextPrice>R$ {product.saleValue}</C.TextPrice></C.DownContainerCard>
-                        </C.CardsProducts>
-                    </Link>
+                        <C.DownContainerCard>
+                            <C.ButtonAddToCart>Adicionar ao carrinho</C.ButtonAddToCart>
+                        </C.DownContainerCard>
+                    </C.CardsProducts>
+
                 )}
 
 
