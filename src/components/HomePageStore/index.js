@@ -17,12 +17,14 @@ import api from '../../services/api'
 export const HomePageStore = () => {
 
     const [allProducts, setAllProducts] = useState([])
+    const [cart, setCart] = useState([])
 
-    const navigate = useNavigate()
 
     useEffect(() => {
         showAllProducts()
     }, [])
+
+    const navigate = useNavigate()
 
     const navigateToInventory = () => {
         navigate('/inventory')
@@ -31,12 +33,25 @@ export const HomePageStore = () => {
     const showAllProducts = async () => {
         try {
             const response = await api.get(`${process.env.REACT_APP_BACKEND_URL}/products`)
-            setAllProducts((response.data.products))
-
+            setAllProducts(response.data.products)
         } catch (error) {
             console.log(error)
         }
     }
+
+    const addToCart = async (productId) => {
+        const id = allProducts.find((product) => product.id === productId)
+
+        try {
+            await api.post(`${process.env.REACT_APP_BACKEND_URL}/cartProducts`, {
+                productId: id.id
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
 
     return (
         <C.Container>
@@ -73,8 +88,8 @@ export const HomePageStore = () => {
                 </Container>
             </Navbar>
             <C.ContainerProducts>
-                {allProducts && allProducts.map((product) =>
-                    <C.CardsProducts>
+                {allProducts && allProducts.map((product, index) =>
+                    <C.CardsProducts key={index} >
                         <C.ImageProduct src={product.imageUrl} />
 
                         <C.CenterContainerCard>
@@ -84,12 +99,11 @@ export const HomePageStore = () => {
                         </C.CenterContainerCard>
 
                         <C.DownContainerCard>
-                            <C.ButtonAddToCart>Adicionar ao carrinho</C.ButtonAddToCart>
+                            <C.ButtonAddToCart onClick={() => addToCart(product.id)}>Adicionar ao carrinho</C.ButtonAddToCart>
                         </C.DownContainerCard>
                     </C.CardsProducts>
 
                 )}
-
 
             </C.ContainerProducts>
         </C.Container>

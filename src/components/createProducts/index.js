@@ -14,6 +14,8 @@ export const CreateProducts = () => {
     const [purchasePrice, setPurchasePrice] = useState('')
     const [showCreationModal, setShowCreationModal] = useState(false)
     const [imageUrl, setImageUrl] = useState('')
+    
+   
 
     const handleCreationModal = () => {
         setShowCreationModal(true)

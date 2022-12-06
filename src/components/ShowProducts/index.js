@@ -158,8 +158,8 @@ export const ShowProducts = () => {
                 <td><center>{product.name}</center></td>
                 <td><center>{product.amount}</center></td>
                 <td><center>{product.brand}</center></td>
-                <td><center>R$ {product.purchasePrice.toFixed(3)}</center></td>
-                <td><center>R$ {product.saleValue.toFixed(3)}</center></td>
+                <td><center>R$ {product.purchasePrice}</center></td>
+                <td><center>R$ {product.saleValue}</center></td>
                 <td onClick={() => getEachProducts(product.id)} ><center><FiEdit onClick={handleCreationModal} /></center></td>
                 <td><center><AiOutlineDelete onClick={() => deleteProducts(product.id)} /></center></td>
               </tr>
