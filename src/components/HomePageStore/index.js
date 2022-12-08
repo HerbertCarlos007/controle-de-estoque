@@ -17,11 +17,12 @@ import api from '../../services/api'
 export const HomePageStore = () => {
 
     const [allProducts, setAllProducts] = useState([])
-    const [cart, setCart] = useState([])
+   
 
 
     useEffect(() => {
         showAllProducts()
+       
     }, [])
 
     const navigate = useNavigate()
@@ -51,6 +52,7 @@ export const HomePageStore = () => {
         }
     }
 
+   
 
 
     return (

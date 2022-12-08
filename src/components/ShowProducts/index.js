@@ -5,7 +5,7 @@ import { FiEdit } from 'react-icons/fi'
 import { AiOutlineDelete } from 'react-icons/ai'
 import { Modal } from '../Modal'
 import Swal from 'sweetalert2'
-import { CreateProducts } from '../CreateProducts'
+import { CreateProducts } from '../createProducts'
 
 
 
@@ -78,10 +78,6 @@ export const ShowProducts = () => {
     }
   }
 
-  const loadProducts = (getProducts) => {
-
-  }
-
   const updateProducts = async (id) => {
     try {
       const response = await api.put(`${process.env.REACT_APP_BACKEND_URL}/products/${id}`, {
@@ -136,7 +132,7 @@ export const ShowProducts = () => {
   return (
 
     <>
-      <CreateProducts />
+      <CreateProducts/>
       <div className='container'>
         <table className="table responsive">
           <thead>
