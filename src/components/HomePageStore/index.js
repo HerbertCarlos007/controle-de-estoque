@@ -36,7 +36,6 @@ export const HomePageStore = () => {
             const response = await api.get(`${process.env.REACT_APP_BACKEND_URL}/products`)
             setAllProducts(response.data.products)
         } catch (error) {
-            console.log(error)
         }
     }
 
@@ -48,11 +47,8 @@ export const HomePageStore = () => {
                 productId: id.id
             })
         } catch (error) {
-            console.log(error)
         }
     }
-
-   
 
 
     return (

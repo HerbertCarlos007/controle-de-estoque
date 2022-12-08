@@ -105,8 +105,6 @@ export const ShowProducts = () => {
     getProducts()
   }
 
-
-
   const deleteProducts = async (id) => {
     try {
       const response = await api.delete(`${process.env.REACT_APP_BACKEND_URL}/products/${id}`)
@@ -122,15 +120,11 @@ export const ShowProducts = () => {
       }
 
     } catch (error) {
-      console.log(error)
     }
     await getProducts()
   }
 
-
-
   return (
-
     <>
       <CreateProducts/>
       <div className='container'>
