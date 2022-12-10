@@ -6,6 +6,7 @@ import api from '../../services/api'
 export const Cart = () => {
 
     const [cart, setCart] = useState([])
+    const [quantity, setQuantity] = useState(1)
 
     useEffect(() => {
         productsCart()
@@ -18,6 +19,22 @@ export const Cart = () => {
         } catch (error) {
         }
     }
+
+    const handleDecrement = () => {
+        if (quantity > 1) {
+            setQuantity(prevCount => prevCount - 1)
+
+        }
+    }
+
+    const handleIncrement = () => {
+        if (quantity < 10) {
+            setQuantity(prevCount => prevCount + 1)
+
+        }
+    }
+
+
 
     return (
         <>
@@ -34,11 +51,17 @@ export const Cart = () => {
                 <C.Line></C.Line>
                 {cart.map((item) =>
                     <C.ContentTableCart>
-                        <C.imageProduct src={item.Product.imageUrl}/>
+                        <C.ImageProduct src={item.Product.imageUrl} />
                         <C.ContentTableText>{item.Product.name}</C.ContentTableText>
                         <C.ContentTableText>{(item.Product.purchasePrice) + (item.Product.purchasePrice) * 0.4}</C.ContentTableText>
-                        <C.ContentTableText>1</C.ContentTableText>
-                        <C.ContentTableText>{item.Product.amount}</C.ContentTableText>
+                        <C.ContentTableText>{quantity}</C.ContentTableText>
+                        <C.ContentTableText>
+
+                            <C.ContainerActions>
+                                <C.ButtonLess onClick={handleDecrement}>-</C.ButtonLess>
+                                <C.ButtonAddMore onClick={handleIncrement}>+</C.ButtonAddMore>
+                            </C.ContainerActions>
+                        </C.ContentTableText>
                         <C.ContentTableText>{item.Product.amount}</C.ContentTableText>
 
 

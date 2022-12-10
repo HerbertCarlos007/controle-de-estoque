@@ -40,9 +40,31 @@ export const ContentTableText = styled.span`
     margin-top: 20px
     
 `
-export const imageProduct = styled.img`
+export const ImageProduct = styled.img`
     width: 50px;
     height: 50px;
     margin-top: 20px
-    
+`
+
+
+export const ContainerActions = styled.div`
+    display: flex;
+    gap: 20px;
+
+`
+
+export const ButtonAddMore = styled.div`
+background-color: grey;
+width: 20px;
+height: 40px;
+text-align: center;
+border-radius: 5px;
+`
+
+export const ButtonLess = styled.div`
+background-color: grey;
+width: 20px;
+height: 10;
+text-align: center;
+border-radius: 5px;
 `
