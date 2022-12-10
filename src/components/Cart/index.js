@@ -32,14 +32,18 @@ export const Cart = () => {
                     <C.HeaderTableText>Preço Total</C.HeaderTableText>
                 </C.HeaderTableCart>
                 <C.Line></C.Line>
-                <C.ContentTableCart>
-                    <C.ContentTableText>Imagem</C.ContentTableText>
-                    <C.ContentTableText>Imagem</C.ContentTableText>
-                    <C.ContentTableText>Imagem</C.ContentTableText>
-                    <C.ContentTableText>Imagem</C.ContentTableText>
-                    <C.ContentTableText>Imagem</C.ContentTableText>
-                    <C.ContentTableText>Imagem</C.ContentTableText>
-                </C.ContentTableCart>
+                {cart.map((item) =>
+                    <C.ContentTableCart>
+                        <C.imageProduct src={item.Product.imageUrl}/>
+                        <C.ContentTableText>{item.Product.name}</C.ContentTableText>
+                        <C.ContentTableText>{(item.Product.purchasePrice) + (item.Product.purchasePrice) * 0.4}</C.ContentTableText>
+                        <C.ContentTableText>1</C.ContentTableText>
+                        <C.ContentTableText>{item.Product.amount}</C.ContentTableText>
+                        <C.ContentTableText>{item.Product.amount}</C.ContentTableText>
+
+
+                    </C.ContentTableCart>
+                )}
             </C.Container>
         </>
 

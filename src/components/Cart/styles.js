@@ -13,7 +13,7 @@ export const Container = styled.div`
 
 export const HeaderTableCart = styled.div`
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     margin-top: 70px;
 `
 
@@ -30,9 +30,19 @@ export const HeaderTableText = styled.span`
 
 export const ContentTableCart = styled.div`
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    line-height:40px;
  `
 
 export const ContentTableText = styled.span`
+    width: 57px;
+    white-space: nowrap;
+    margin-top: 20px
+    
+`
+export const imageProduct = styled.img`
+    width: 50px;
+    height: 50px;
+    margin-top: 20px
     
 `
