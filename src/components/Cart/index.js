@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react'
+import * as C from './styles'
 import api from '../../services/api'
 
 export const Cart = () => {
@@ -19,19 +20,28 @@ export const Cart = () => {
     }
 
     return (
-        <div>
+        <>
+            <C.Header />
+            <C.Container>
+                <C.HeaderTableCart>
+                    <C.HeaderTableText>Imagem</C.HeaderTableText>
+                    <C.HeaderTableText>Produto</C.HeaderTableText>
+                    <C.HeaderTableText>Preço</C.HeaderTableText>
+                    <C.HeaderTableText>Quantidade</C.HeaderTableText>
+                    <C.HeaderTableText>Ações</C.HeaderTableText>
+                    <C.HeaderTableText>Preço Total</C.HeaderTableText>
+                </C.HeaderTableCart>
+                <C.Line></C.Line>
+                <C.ContentTableCart>
+                    <C.ContentTableText>Imagem</C.ContentTableText>
+                    <C.ContentTableText>Imagem</C.ContentTableText>
+                    <C.ContentTableText>Imagem</C.ContentTableText>
+                    <C.ContentTableText>Imagem</C.ContentTableText>
+                    <C.ContentTableText>Imagem</C.ContentTableText>
+                    <C.ContentTableText>Imagem</C.ContentTableText>
+                </C.ContentTableCart>
+            </C.Container>
+        </>
 
-            <div>
-                {cart.map((product, index) =>
-                    <div key={index}> 
-                        <h1>{product.Product.name}</h1>
-                        <h1>{product.Product.brand}</h1>
-                        
-                    </div>
-
-
-                )}
-            </div>
-        </div>
     )
 }
