@@ -3,6 +3,9 @@ import React, { useState, useEffect } from 'react'
 import * as C from './styles'
 import api from '../../services/api'
 
+import { dinero, toDecimal, toUnits } from 'dinero.js';
+import { BRL } from '@dinero.js/currencies';
+
 export const Cart = () => {
 
     const [cart, setCart] = useState([])
@@ -11,7 +14,14 @@ export const Cart = () => {
     useEffect(() => {
         productsCart()
     }, [])
+
     
+    function getCurrency(value) {
+        return Number(value).toLocaleString('pt-BR', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          })
+      };
 
     const productsCart = async () => {
         try {
@@ -29,10 +39,7 @@ export const Cart = () => {
     }
 
     const handleIncrement = () => {
-        if (quantity < 10) {
-            setQuantity(prevCount => prevCount + 1)
-
-        }
+        setQuantity(prevCount => prevCount + 1)
     }
 
 
@@ -54,7 +61,7 @@ export const Cart = () => {
                     <C.ContentTableCart>
                         <C.ImageProduct src={item.imageUrl} />
                         <C.ContentTableText>{item.name}</C.ContentTableText>
-                        <C.ContentTableText>{item.saleValue}</C.ContentTableText>
+                        <C.ContentTableText>{getCurrency(item.saleValue)}</C.ContentTableText>
                         <C.ContentTableText>{quantity}</C.ContentTableText>
                         <C.ContentTableText>
 
@@ -63,7 +70,7 @@ export const Cart = () => {
                                 <C.ButtonAddMore onClick={handleIncrement}>+</C.ButtonAddMore>
                             </C.ContainerActions>
                         </C.ContentTableText>
-                        <C.ContentTableText>{item.saleValue * quantity}</C.ContentTableText>
+                        <C.ContentTableText>{getCurrency(item.saleValue * quantity)}</C.ContentTableText>
 
 
                     </C.ContentTableCart>
