@@ -11,6 +11,7 @@ export const Cart = () => {
     useEffect(() => {
         productsCart()
     }, [])
+    
 
     const productsCart = async () => {
         try {
@@ -51,9 +52,9 @@ export const Cart = () => {
                 <C.Line></C.Line>
                 {cart.map((item) =>
                     <C.ContentTableCart>
-                        <C.ImageProduct src={item.Product.imageUrl} />
-                        <C.ContentTableText>{item.Product.name}</C.ContentTableText>
-                        <C.ContentTableText>{(item.Product.purchasePrice) + (item.Product.purchasePrice) * 0.4}</C.ContentTableText>
+                        <C.ImageProduct src={item.imageUrl} />
+                        <C.ContentTableText>{item.name}</C.ContentTableText>
+                        <C.ContentTableText>{item.saleValue}</C.ContentTableText>
                         <C.ContentTableText>{quantity}</C.ContentTableText>
                         <C.ContentTableText>
 
@@ -62,7 +63,7 @@ export const Cart = () => {
                                 <C.ButtonAddMore onClick={handleIncrement}>+</C.ButtonAddMore>
                             </C.ContainerActions>
                         </C.ContentTableText>
-                        <C.ContentTableText>{item.Product.amount}</C.ContentTableText>
+                        <C.ContentTableText>{item.saleValue * quantity}</C.ContentTableText>
 
 
                     </C.ContentTableCart>

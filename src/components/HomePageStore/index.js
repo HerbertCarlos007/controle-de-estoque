@@ -31,6 +31,10 @@ export const HomePageStore = () => {
         navigate('/inventory')
     }
 
+    const navigateToCart = () => {
+        navigate('/cart')
+    }
+
     const showAllProducts = async () => {
         try {
             const response = await api.get(`${process.env.REACT_APP_BACKEND_URL}/products`)
@@ -40,11 +44,9 @@ export const HomePageStore = () => {
     }
 
     const addToCart = async (productId) => {
-        const id = allProducts.find((product) => product.id === productId)
-
         try {
             await api.post(`${process.env.REACT_APP_BACKEND_URL}/cartProducts`, {
-                productId: id.id
+                productId
             })
         } catch (error) {
         }
@@ -58,7 +60,7 @@ export const HomePageStore = () => {
                     <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${false}`} />
                     <Navbar.Brand href="#">Bryan Store</Navbar.Brand >
                     <Navbar.Brand href="#">
-                        <AiOutlineShoppingCart />
+                        <AiOutlineShoppingCart onClick={navigateToCart}/>
                     </Navbar.Brand>
                     <Navbar.Offcanvas
                         id={`offcanvasNavbar-expand-${false}`}
