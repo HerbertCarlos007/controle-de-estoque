@@ -94,6 +94,7 @@ export const CreateProducts = () => {
                     <C.ButtonDeleteStock>Deletar Estoque</C.ButtonDeleteStock>
                 </C.ButtonsContainer>
                 <Modal show={showCreationModal} onClose={handleCloseCreationModal}>
+                    <C.ModalContainer>
                     <C.InputName placeholder='Nome' onChange={handleName}></C.InputName>
                     <C.InputDescription placeholder='Descrição' onChange={handleDescription}></C.InputDescription>
                     <C.InputImageUrl placeholder='URL' onChange={handleImageUrl}></C.InputImageUrl>
@@ -101,6 +102,7 @@ export const CreateProducts = () => {
                     <C.InputBrand placeholder='Marca' onChange={handleBrand}></C.InputBrand>
                     <C.InputPurshacePrice placeholder='Valor de Custo' onChange={handlePurchasePrice}></C.InputPurshacePrice>
                     <C.ButtonRegisterModal onClick={registerProducts}>Cadastrar</C.ButtonRegisterModal>
+                    </C.ModalContainer>
                 </Modal>
 
             </C.Container>

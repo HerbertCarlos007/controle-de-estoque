@@ -1,16 +1,16 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { Container, Translucent, Wrapper } from './styles'
 
-export const Modal = ({ show, children, onClose }) => {
-    
+export const Modal = ({ show, children, onClose, height, width }) => {
+
 
     return (
         <>
             {show ?
                 <>
                     <Wrapper>
-                    <Container>{children}</Container>
-                    <Translucent onClick={onClose}></Translucent>
+                        <Container width={width} height={height}>{children}</Container>
+                        <Translucent onClick={onClose}></Translucent>
                     </Wrapper>
                 </> : ''}
 

@@ -135,7 +135,12 @@ export const ButtonRegisterModal = styled.button`
     justify-content: center;
     align-items: center;
     position: relative;
-    left: 105px;
-    top: 25px;
+`
+
+export const ModalContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 `
 

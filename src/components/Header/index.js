@@ -1,5 +1,5 @@
 import * as C from './styles'
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Modal } from '../Modal'
@@ -16,27 +16,34 @@ export const Header = () => {
 
     const handleCreationModal = () => {
         setShowCreationModal(true)
-      }
-    
-      const handleCloseCreationModal = () => {
+    }
+
+    const handleCloseCreationModal = () => {
         setShowCreationModal(false)
-      }
+    }
 
     return (
         <C.Header>
             <C.TitleHeader>Listagem de Produtos</C.TitleHeader>
             <C.LeftSide>
                 <C.textNavBar onClick={navigateToStore}>Loja</C.textNavBar>
-                <NavDropdown
+                {/* <NavDropdown
                     title="Perfil"
                     id={`offcanvasNavbarDropdown-expand-${false}`}
                     onClick={handleCreationModal}
                 >
                     <NavDropdown.Item href="#action3">Configurações</NavDropdown.Item>
-                </NavDropdown>
+                </NavDropdown> */}
+
+                <h2 onClick={handleCreationModal}>login</h2>
             </C.LeftSide>
-            <Modal show={showCreationModal} onClose={handleCloseCreationModal}>
-                <div>aaa</div>
+            <Modal show={showCreationModal} onClose={handleCloseCreationModal} height={"300px"} width={'400px'} >
+                <C.ModalContainer>
+                    <C.Text>Faça seu Login</C.Text>
+                    <C.Input placeholder='E-mail' type='text'></C.Input>
+                    <C.Input placeholder='Senha' type='password'></C.Input>
+                    <C.Text fontSize={'15px'} fontWeight={'0'}>Não tem conta? <b><C.LinkToRegister>Registre-se</C.LinkToRegister></b></C.Text>
+                </C.ModalContainer>
             </Modal>
         </C.Header>
     )
