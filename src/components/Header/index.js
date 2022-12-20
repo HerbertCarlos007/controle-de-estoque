@@ -2,11 +2,8 @@ import * as C from './styles'
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { Modal } from '../Modal'
 
 export const Header = () => {
-
-    const [showCreationModal, setShowCreationModal] = useState(false)
 
     const navigate = useNavigate()
 
@@ -14,14 +11,9 @@ export const Header = () => {
         navigate('/')
     }
 
-    const handleCreationModal = () => {
-        setShowCreationModal(true)
+    const navigateToLogin = () => {
+        navigate('/login')
     }
-
-    const handleCloseCreationModal = () => {
-        setShowCreationModal(false)
-    }
-
     return (
         <C.Header>
             <C.TitleHeader>Listagem de Produtos</C.TitleHeader>
@@ -34,17 +26,8 @@ export const Header = () => {
                 >
                     <NavDropdown.Item href="#action3">Configurações</NavDropdown.Item>
                 </NavDropdown> */}
-
-                <h2 onClick={handleCreationModal}>login</h2>
+                <h2 onClick={navigateToLogin}>login</h2>
             </C.LeftSide>
-            <Modal show={showCreationModal} onClose={handleCloseCreationModal} height={"300px"} width={'400px'} >
-                <C.ModalContainer>
-                    <C.Text>Faça seu Login</C.Text>
-                    <C.Input placeholder='E-mail' type='text'></C.Input>
-                    <C.Input placeholder='Senha' type='password'></C.Input>
-                    <C.Text fontSize={'15px'} fontWeight={'0'}>Não tem conta? <b><C.LinkToRegister>Registre-se</C.LinkToRegister></b></C.Text>
-                </C.ModalContainer>
-            </Modal>
         </C.Header>
     )
 }
