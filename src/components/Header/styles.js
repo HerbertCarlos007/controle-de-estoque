@@ -54,7 +54,7 @@ export const Text = styled.span`
 `
 
 export const LinkToRegister = styled.a`
-
+    
 `
 
 

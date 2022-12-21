@@ -55,6 +55,7 @@ export const LinkToRegister = styled.a`
     text-decoration: none;
     color: #412972;
     font-weight: 600px;
+    cursor: pointer;
 `
 
 export const LinkToRetunToLogin = styled.a`
