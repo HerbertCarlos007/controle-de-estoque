@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom'
 import * as C from './styles'
 import api from '../../services/api'
 
@@ -11,6 +12,8 @@ export const Login = () => {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
 
+    const navigate = useNavigate()
+    
     const switchLogin = () => {
         setIsLoggingIn(!isLoggingIn)
     }
@@ -30,6 +33,16 @@ export const Login = () => {
         setConfirmPassword(textConfirmPassword)
     }
 
+    const handleClickLogin = async () => {
+        const response = await api.post(`${process.env.REACT_APP_BACKEND_URL}/auth`,{
+            email, password
+        })
+        if(response.status === 200) {
+            localStorage.setItem('token', response.data.token)
+            navigate('/inventory')
+        }
+    }
+
     const handleClickRegister = async () => {
         const response = await api.post(`${process.env.REACT_APP_BACKEND_URL}/register`, {
             email, password, confirmPassword
@@ -41,14 +54,15 @@ export const Login = () => {
             <C.ContainerLogin>
                 {isLoggingIn ? <>
                     <C.Text>Faça seu Login</C.Text>
-                    <C.InputLogin type='text' placeholder="Username" />
-                    <C.InputLogin type='password' placeholder="Senha" />
+                    <C.InputLogin type='text' placeholder="Username" onChange={handleLogin} />
+                    <C.InputLogin type='password' placeholder="Senha" onChange={handlePassword}/>
                     <C.InputLogin
                         type='button'
                         value='Login'
                         fontSize={'22px'}
                         backgroundColor={'#412972'}
                         color={'#fff'}
+                        onClick={handleClickLogin}
                     />
                     <C.Text>Não tem cadastro? <C.LinkToRegister onClick={switchLogin}>Registre-se</C.LinkToRegister></C.Text>
                 </> :
