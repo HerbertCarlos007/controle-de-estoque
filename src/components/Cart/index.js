@@ -2,15 +2,14 @@
 import React, { useState, useEffect } from 'react'
 import * as C from './styles'
 import api from '../../services/api'
-
-import { dinero, toDecimal, toUnits } from 'dinero.js';
-import { BRL } from '@dinero.js/currencies';
+import { Load } from '../Load'
 
 export const Cart = () => {
 
     const [cart, setCart] = useState([])
     const [quantity, setQuantity] = useState(1)
     const [productIncremented, setProductIncremented] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
         productsCart()
@@ -28,6 +27,7 @@ export const Cart = () => {
         try {
             const response = await api.get(`${process.env.REACT_APP_BACKEND_URL}/cartProducts`)
             setCart(response.data)
+            setIsLoading(true)
         } catch (error) {
         }
     }
@@ -67,7 +67,6 @@ export const Cart = () => {
         }
     }
 
-
     return (
         <>
             <C.Header />
@@ -95,9 +94,11 @@ export const Cart = () => {
                             </C.ContainerActions>
                         </C.ContentTableText>
                         <C.ContentTableText>{getCurrency(item.saleValue * item.quantity)}</C.ContentTableText>
-
-
                     </C.ContentTableCart>
+                )}
+                 {!isLoading && <Load/>}
+                {isLoading && cart.length === 0 && (
+                    <p>Não há projetos cadastrados</p>
                 )}
             </C.Container>
         </>

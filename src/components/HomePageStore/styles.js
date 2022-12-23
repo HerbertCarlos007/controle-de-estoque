@@ -9,6 +9,10 @@ export const Header = styled.div`
 export const Container = styled.div`
      background-color: #f2f2f2;
      height: 100vh;
+     display: flex;
+     justify-content: center;
+     
+
 `
 
 export const ContainerProducts = styled.div`
@@ -17,7 +21,7 @@ margin-top: 30px;
     grid-template-columns: repeat(3, 1fr);
     flex-wrap: wrap;
     justify-items: center;
-    gap: 50px 0px;
+    gap: 100px;
    
     @media (min-width: 1600px){
         grid-template-columns: repeat(4, 1fr);

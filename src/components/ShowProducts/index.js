@@ -6,6 +6,7 @@ import { AiOutlineDelete } from 'react-icons/ai'
 import { Modal } from '../Modal'
 import Swal from 'sweetalert2'
 import { CreateProducts } from '../createProducts'
+import { Load } from '../Load'
 
 
 
@@ -17,6 +18,7 @@ export const ShowProducts = () => {
   const [purchasePrice, setPurchasePrice] = useState('')
   const [showCreationModal, setShowCreationModal] = useState(false)
   const [selectedId, setSelectedId] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     getProducts()
@@ -59,6 +61,7 @@ export const ShowProducts = () => {
       const response = await api.get(`${process.env.REACT_APP_BACKEND_URL}/products`)
       setProducts(response.data.products)
       allProductsRef.current = response.data.products
+      setIsLoading(true)
     } catch (error) {
       console.log(error)
     }
@@ -108,7 +111,7 @@ export const ShowProducts = () => {
   const deleteProducts = async (id) => {
     try {
       const response = await api.delete(`${process.env.REACT_APP_BACKEND_URL}/products/${id}`)
-
+      
       if (response.status === 204) {
         Swal.fire({
           position: 'center',
@@ -120,13 +123,14 @@ export const ShowProducts = () => {
       }
 
     } catch (error) {
+      
     }
     await getProducts()
   }
 
   return (
     <>
-      <CreateProducts/>
+      <CreateProducts />
       <div className='container'>
         <table className="table responsive">
           <thead>
@@ -167,6 +171,10 @@ export const ShowProducts = () => {
           </div>
         </Modal>
       </div>
+      {!isLoading && <Load />}
+      {isLoading && products.length === 0 && (
+        <p>Não há projetos cadastrados</p>
+      )}
     </>
   )
 }
