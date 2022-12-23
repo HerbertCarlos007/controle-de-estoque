@@ -11,12 +11,11 @@ export const Container = styled.div`
      height: 100vh;
      display: flex;
      justify-content: center;
-     
-
+    
 `
 
 export const ContainerProducts = styled.div`
-margin-top: 30px;
+    margin-top: 30px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     flex-wrap: wrap;

@@ -34,10 +34,5 @@ tbody > tr:nth-of-type(odd){
     border: 1px solid #412972;
     color: white;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    top: 30px;
-    left: 105px;
+    margin-top: 10px;
 }

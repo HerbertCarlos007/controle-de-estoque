@@ -8,7 +8,7 @@ import Swal from 'sweetalert2'
 import { CreateProducts } from '../createProducts'
 import { Load } from '../Load'
 
-
+import * as C from './styles'
 
 export const ShowProducts = () => {
 
@@ -111,7 +111,7 @@ export const ShowProducts = () => {
   const deleteProducts = async (id) => {
     try {
       const response = await api.delete(`${process.env.REACT_APP_BACKEND_URL}/products/${id}`)
-      
+
       if (response.status === 204) {
         Swal.fire({
           position: 'center',
@@ -123,7 +123,7 @@ export const ShowProducts = () => {
       }
 
     } catch (error) {
-      
+
     }
     await getProducts()
   }
@@ -162,13 +162,13 @@ export const ShowProducts = () => {
         </table>
 
         <Modal show={showCreationModal} onClose={handleCloseCreationModal}>
-          <div>
+          <C.ModalContainer>
             <input type='text' className='inputs-modal' placeholder='Nome' onChange={handleName} value={name} />
             <input type='text' className='inputs-modal' placeholder='Quantidade' onChange={handleAmount} value={amount} />
             <input type='text' className='inputs-modal' placeholder='Marca' onChange={handleBrand} value={brand} />
             <input type='text' className='inputs-modal' placeholder='Preço de custo' onChange={handlePurchasePrice} value={purchasePrice} />
             <button className='button-modal-update-produto' onClick={() => updateProducts(selectedId)}>Atualizar Produto</button>
-          </div>
+          </C.ModalContainer>
         </Modal>
       </div>
       {!isLoading && <Load />}
