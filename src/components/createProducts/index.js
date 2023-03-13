@@ -14,8 +14,8 @@ export const CreateProducts = () => {
     const [purchasePrice, setPurchasePrice] = useState('')
     const [showCreationModal, setShowCreationModal] = useState(false)
     const [imageUrl, setImageUrl] = useState('')
-    
-   
+
+
 
     const handleCreationModal = () => {
         setShowCreationModal(true)
@@ -63,7 +63,7 @@ export const CreateProducts = () => {
 
         try {
             const response = await api.post(`${process.env.REACT_APP_BACKEND_URL}/products`,
-                { name, description, imageUrl, amount,brand, purchasePrice }
+                { name, description, imageUrl, amount, brand, purchasePrice }
             )
 
             if (response.status === 201) {
@@ -85,7 +85,7 @@ export const CreateProducts = () => {
 
     return (
         <>
-        <Header/>
+            <Header />
             <C.Container>
 
                 <C.Title>Lista de Produtos</C.Title>
@@ -95,13 +95,13 @@ export const CreateProducts = () => {
                 </C.ButtonsContainer>
                 <Modal show={showCreationModal} onClose={handleCloseCreationModal}>
                     <C.ModalContainer>
-                    <C.InputName placeholder='Nome' onChange={handleName}></C.InputName>
-                    <C.InputDescription placeholder='Descrição' onChange={handleDescription}></C.InputDescription>
-                    <C.InputImageUrl placeholder='URL' onChange={handleImageUrl}></C.InputImageUrl>
-                    <C.InputAmount placeholder='Quantidade' onChange={handleAmount}></C.InputAmount>
-                    <C.InputBrand placeholder='Marca' onChange={handleBrand}></C.InputBrand>
-                    <C.InputPurshacePrice placeholder='Valor de Custo' onChange={handlePurchasePrice}></C.InputPurshacePrice>
-                    <C.ButtonRegisterModal onClick={registerProducts}>Cadastrar</C.ButtonRegisterModal>
+                        <C.InputName placeholder='Nome' onChange={handleName}></C.InputName>
+                        <C.InputDescription placeholder='Descrição' onChange={handleDescription}></C.InputDescription>
+                        <C.InputImageUrl placeholder='URL' onChange={handleImageUrl}></C.InputImageUrl>
+                        <C.InputAmount placeholder='Quantidade' onChange={handleAmount}></C.InputAmount>
+                        <C.InputBrand placeholder='Marca' onChange={handleBrand}></C.InputBrand>
+                        <C.InputPurshacePrice placeholder='Valor de Custo' onChange={handlePurchasePrice}></C.InputPurshacePrice>
+                        <C.ButtonRegisterModal onClick={registerProducts}>Cadastrar</C.ButtonRegisterModal>
                     </C.ModalContainer>
                 </Modal>
 
