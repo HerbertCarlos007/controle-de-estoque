@@ -171,9 +171,12 @@ export const ShowProducts = () => {
           </C.ModalContainer>
         </Modal>
       </div>
-      {!isLoading && <Load />}
-      {isLoading && products.length === 0 && (
-        <p>Não há projetos cadastrados</p>
+
+
+      {isLoading ? (
+        (!products || products.length === 0) && <p>Não há projetos cadastrados</p>
+      ) : (
+        <Load />
       )}
     </>
   )

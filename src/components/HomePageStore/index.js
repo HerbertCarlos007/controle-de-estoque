@@ -50,9 +50,9 @@ export const HomePageStore = () => {
         <>
             <SideBar isVisible={isVisible} setIsVisible={setIsVisible} />
             <C.Container onClickCapture={() => setIsVisible(false)}>
-                <HeaderStore setIsVisible={setIsVisible}/>
+                <HeaderStore setIsVisible={setIsVisible} />
                 <C.ContainerProducts>
-                    {allProducts.length > 0 && allProducts.map((product, index) =>
+                    {allProducts && allProducts.map((product, index) =>
                         <C.CardsProducts key={index} >
                             <C.ImageProduct src={product.imageUrl} />
                             <C.TextTitle>{product.name}</C.TextTitle>
@@ -65,10 +65,12 @@ export const HomePageStore = () => {
 
                     )}
                 </C.ContainerProducts>
-                {!isLoading && <Load />}
-                {isLoading && allProducts.length === 0 && (
-                    <p>Não há projetos cadastrados</p>
+                {isLoading ? (
+                    (!allProducts || allProducts.length === 0) && <p>Não há projetos cadastrados</p>
+                ) : (
+                    <Load />
                 )}
+
             </C.Container>
         </>
     )
