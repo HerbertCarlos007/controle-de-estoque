@@ -4,8 +4,13 @@ import { useNavigate } from 'react-router-dom'
 import * as C from './styles'
 
 export const SideBar = ({ isVisible, setIsVisible }) => {
-    
+
     const navigate = useNavigate()
+
+    const logout = () => {
+        localStorage.removeItem('token')
+        navigate('/login')
+    }
 
     return (
         <>
@@ -21,11 +26,11 @@ export const SideBar = ({ isVisible, setIsVisible }) => {
                             }}
                         >
                             <Menu style={{ marginTop: '60px' }}>
-                                <MenuItem  onClick={() => navigate('/inventory')}>Estoque</MenuItem>
+                                <MenuItem onClick={() => navigate('/inventory')}>Estoque</MenuItem>
                                 <MenuItem onClick={() => navigate('/')}> Loja </MenuItem>
                                 <MenuItem onClick={() => navigate('/cart')}> Carrinho </MenuItem>
                                 <MenuItem> Minha conta </MenuItem>
-                                <MenuItem style={{ marginTop: '150px' }} > Sair </MenuItem>
+                                <MenuItem style={{ marginTop: '150px' }} onClick={logout} > Sair </MenuItem>
                             </Menu>
                         </Sidebar>
                     </C.Container>
