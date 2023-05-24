@@ -5,7 +5,7 @@ import { Modal } from '../Modal'
 import Swal from 'sweetalert2'
 import { Header } from '../Header'
 
-export const CreateProducts = () => {
+export const CreateProducts = ({getProducts}) => {
 
     const [name, setName] = useState('')
     const [amount, setAmount] = useState('')
@@ -72,7 +72,8 @@ export const CreateProducts = () => {
                     showConfirmButton: false,
                     timer: 1500
                 }).then(
-                    handleCloseCreationModal()
+                    handleCloseCreationModal(),
+                    getProducts()
                 )
             }
 

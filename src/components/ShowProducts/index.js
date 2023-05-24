@@ -130,7 +130,7 @@ export const ShowProducts = () => {
 
   return (
     <>
-      <CreateProducts />
+      <CreateProducts getProducts={getProducts} />
       <div className='container'>
         <table className="table responsive">
           <thead>
