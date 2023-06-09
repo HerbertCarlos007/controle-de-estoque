@@ -1,10 +1,14 @@
 import React from 'react'
 import * as C from './styles'
+import { useNavigate } from 'react-router-dom'
 import { AiOutlineMenu } from 'react-icons/ai'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 
 
 export const HeaderStore = ({setIsVisible}) => {
+    
+    const navigate = useNavigate()
+    
     return (
         <C.Container>
             <C.Content>
@@ -13,7 +17,7 @@ export const HeaderStore = ({setIsVisible}) => {
                 </C.Menu>
                 <C.Title>Loja de Roupas</C.Title>
                 <C.Actions>
-                    <AiOutlineShoppingCart size={24}/>
+                    <AiOutlineShoppingCart size={24} onClick={() => navigate('cart')}/>
                 </C.Actions>
             </C.Content>
         </C.Container>

@@ -80,7 +80,7 @@ export const Cart = () => {
                     <C.HeaderTableText>Preço Total</C.HeaderTableText>
                 </C.HeaderTableCart>
                 <C.Line></C.Line>
-                {cart.map((item) =>
+                {cart && cart.map((item) =>
                     <C.ContentTableCart>
                         <C.ImageProduct src={item.imageUrl} />
                         <C.ContentTableText>{item.name}</C.ContentTableText>

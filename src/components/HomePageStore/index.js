@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 import * as C from './styles'
 import api from '../../services/api'
 import { Load } from '../Load'
@@ -17,15 +16,6 @@ export const HomePageStore = () => {
 
     }, [])
 
-    const navigate = useNavigate()
-
-    const navigateToInventory = () => {
-        navigate('/inventory')
-    }
-
-    const navigateToCart = () => {
-        navigate('/cart')
-    }
 
     const showAllProducts = async () => {
         try {
@@ -54,9 +44,12 @@ export const HomePageStore = () => {
                 <C.ContainerProducts>
                     {allProducts && allProducts.map((product, index) =>
                         <C.CardsProducts key={index} >
+                                
                             <C.ImageProduct src={product.imageUrl} />
+                            <C.ContainerItens>
                             <C.TextTitle>{product.name}</C.TextTitle>
                             <C.TextPrice>R$ {product.saleValue}</C.TextPrice>
+                            </C.ContainerItens>
                             <C.ContaineButton>
 
                                 <C.ButtonAddToCart onClick={() => addToCart(product.id)}>Adicionar ao carrinho</C.ButtonAddToCart>
