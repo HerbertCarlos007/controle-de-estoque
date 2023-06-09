@@ -44,12 +44,10 @@ export const HomePageStore = () => {
                 <C.ContainerProducts>
                     {allProducts && allProducts.map((product, index) =>
                         <C.CardsProducts key={index} >
-                                
                             <C.ImageProduct src={product.imageUrl} />
-                            <C.ContainerItens>
+                            <C.ContainerItens></C.ContainerItens>
                             <C.TextTitle>{product.name}</C.TextTitle>
                             <C.TextPrice>R$ {product.saleValue}</C.TextPrice>
-                            </C.ContainerItens>
                             <C.ContaineButton>
 
                                 <C.ButtonAddToCart onClick={() => addToCart(product.id)}>Adicionar ao carrinho</C.ButtonAddToCart>

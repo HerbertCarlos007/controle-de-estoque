@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     background-color: black;
+    min-height: 100vh;
 `
 
 export const ContainerProducts = styled.div`
@@ -15,7 +16,7 @@ export const ContainerProducts = styled.div`
 export const CardsProducts = styled.div`
    background-color: white;
     width: 280px;
-    height: 350px;
+    height: 370px;
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -29,6 +30,7 @@ export const ContainerItens = styled.div`
     flex-direction: column;
     margin-right: auto;
     margin-left: 25px;
+    
 `
 
 export const TextTitle = styled.span`
@@ -59,5 +61,5 @@ export const ButtonAddToCart = styled.button`
 `
 
 export const ContaineButton = styled.div`   
-    margin-top: 30px;
+    margin-top: 20px;
 `
