@@ -33,7 +33,7 @@ export const HeaderLeftSection = styled.div`
 `
 
 export const HeaderRightSection = styled.div`
-    width: 500px;
+    width: 750px;
     display: flex;
     justify-content: space-evenly;
 `
@@ -45,7 +45,7 @@ export const ColumnValue = styled.span`
 export const Line = styled.div`
     width: 100%;
     height: 2px;
-    background-color: gray;
+    background-color: #edf0ee;
     margin-top: 10px;
 `
 
@@ -53,6 +53,7 @@ export const ContentTable = styled.div`
     display: flex;
     justify-content: space-between;
     margin-top: 30px;
+    margin-bottom: 40px;
 `
 
 export const RowValue = styled.span`
@@ -74,13 +75,16 @@ export const ContainerActions = styled.div`
     
 `
 
-
 export const ContentTableLeftSection = styled.div`
-    
+    display: flex;
 `
 
 export const ContentTableRightSection = styled.div`
-     width: 500px;
+     width: 750px;
     display: flex;
     justify-content: space-evenly;
+`
+
+export const ProductImage = styled.img`
+    width: 70px;
 `

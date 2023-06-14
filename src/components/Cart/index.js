@@ -68,21 +68,30 @@ export const Cart = () => {
                         </C.HeaderRightSection>
                     </C.HeaderTable>
                     <C.Line></C.Line>
-                    
-                    <C.ContentTable>
-                        <C.ContentTableLeftSection>aaa</C.ContentTableLeftSection>
-                        
-                        <C.ContentTableRightSection>
-                            <C.RowValue>R$ 120</C.RowValue>
-                            <C.ContainerActions>
-                                <span>-</span>
-                                <span>1</span>
-                                <span>+</span>
-                            </C.ContainerActions>
-                            <C.RowValue>240</C.RowValue>
-                            <C.RowValue>x</C.RowValue>
-                        </C.ContentTableRightSection>
-                    </C.ContentTable>
+
+                    {cart && cart.map((item) =>
+
+                        <>
+                            <C.ContentTable>
+                                <C.ContentTableLeftSection>
+                                    <C.ProductImage src={item.imageUrl} />
+                                    <span>{item.name}</span>
+                                </C.ContentTableLeftSection>
+
+                                <C.ContentTableRightSection>
+                                    <C.RowValue>R$ {item.saleValue}</C.RowValue>
+                                    <C.ContainerActions>
+                                        <span onClick={() => handleDecrement(item.id)}>-</span>
+                                        <span>{item.quantity}</span>
+                                        <span onClick={() => handleIncrement(item.id)}>+</span>
+                                    </C.ContainerActions>
+                                    <C.RowValue>{getCurrency(item.saleValue * item.quantity)}</C.RowValue>
+                                    <C.RowValue>x</C.RowValue>
+                                </C.ContentTableRightSection>
+                            </C.ContentTable>
+                            <C.Line></C.Line>
+                        </>
+                    )}
                 </C.ContainerCart>
 
 
