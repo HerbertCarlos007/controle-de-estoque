@@ -94,10 +94,37 @@ export const Cart = () => {
                     )}
                 </C.ContainerCart>
 
+                <C.Teste>
 
-                <C.ContainerResume>
-                    aa
-                </C.ContainerResume>
+                    <C.ContainerResume>
+                        <C.TopSectionResume>
+                            <C.TitleContainerResume>Resumo da compra</C.TitleContainerResume>
+                        </C.TopSectionResume>
+                        <C.LineResume></C.LineResume>
+                        <C.CenterSectionResume>
+                            <C.LeftSectionResume>
+                                <span>Sub-Total</span>
+                                <span>Frete</span>
+                            </C.LeftSectionResume>
+
+                            <C.RightSectionResume>
+                                <span>R$ 400</span>
+                                <span>Gratuito</span>
+                            </C.RightSectionResume>
+                        </C.CenterSectionResume>
+                        <C.AddDiscount>Adicionar cupom de desconto</C.AddDiscount>
+                        <C.DownSectionResume>
+                            <C.LeftSectionResume>Total</C.LeftSectionResume>
+                            <C.RightSectionResume>R$ 200</C.RightSectionResume>
+                        </C.DownSectionResume>
+                    </C.ContainerResume>
+                    
+                    <C.ContainerCheckout>
+                        FINALIZAR COMPRA
+                    </C.ContainerCheckout>
+                </C.Teste>
+
+
             </C.Container>
         </>
     )

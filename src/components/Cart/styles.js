@@ -18,10 +18,72 @@ export const ContainerCart = styled.div`
 `
 
 export const ContainerResume = styled.div`
-    width: 300px;
-    height: 300px;
-    background-color: red;
-    
+  width: 250px;
+  height: 250px;
+  background-color: #ededed;
+  border: 1px solid #bfbfbf;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`
+
+export const TitleContainerResume = styled.span`
+    font-weight: bold;
+`
+
+
+export const TopSectionResume = styled.div`
+    padding: 10px;
+`
+
+export const CenterSectionResume = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+`
+
+export const LineResume = styled.div`
+    width: 100%;
+    height: 2px;
+    background-color: #bfbfbf;
+`
+
+export const AddDiscount = styled.span`
+  color: green;
+  cursor: pointer;
+  padding: 10px;
+`
+
+export const LeftSectionResume = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  
+  span {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+`
+
+export const RightSectionResume = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  
+  span {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+`
+
+export const DownSectionResume = styled.div`
+  background-color: #bfbfbf;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 `
 
 export const HeaderTable = styled.div`
@@ -87,4 +149,22 @@ export const ContentTableRightSection = styled.div`
 
 export const ProductImage = styled.img`
     width: 70px;
+`
+
+export const Teste = styled.div`
+    
+`
+
+export const ContainerCheckout = styled.div`
+    display: flex;
+    width: 250px;
+    height: 40px;
+    margin-top: 15px;
+    justify-content: center;
+    align-items: center;
+    background-color: green;
+    color: white;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 5px;
 `
