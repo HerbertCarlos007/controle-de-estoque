@@ -95,9 +95,13 @@ export const HeaderLeftSection = styled.div`
 `
 
 export const HeaderRightSection = styled.div`
-    width: 750px;
+     width: 800px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    
+    @media (max-width: 1366px) {
+        width: 450px;
+    }
 `
 
 export const ColumnValue = styled.span`
@@ -142,9 +146,13 @@ export const ContentTableLeftSection = styled.div`
 `
 
 export const ContentTableRightSection = styled.div`
-     width: 750px;
+     width: 800px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    
+    @media (max-width: 1366px) {
+        width: 450px;
+    }
 `
 
 export const ProductImage = styled.img`
