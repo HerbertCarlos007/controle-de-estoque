@@ -3,19 +3,23 @@ import * as C from './styles'
 import api from '../../services/api'
 import { Load } from '../Load'
 export const Cart = () => {
+
     const [cart, setCart] = useState([])
     const [quantity, setQuantity] = useState(1)
     const [productIncremented, setProductIncremented] = useState([])
     const [isLoading, setIsLoading] = useState(false)
+
     useEffect(() => {
         productsCart()
     }, [])
+
     function getCurrency(value) {
         return Number(value).toLocaleString('pt-BR', {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
         })
     };
+
     const productsCart = async () => {
         try {
             const response = await api.get(`${process.env.REACT_APP_BACKEND_URL}/cartProducts`)
@@ -44,15 +48,24 @@ export const Cart = () => {
         setProductIncremented(cartProductsIncremented)
     }
 
-    const handleQuantityChange = async (productId, userId, quantity) => {
+    const deleteProduct = async (id) => {
         try {
-            await api.patch(`${process.env.REACT_APP_BACKEND_URL}/cartProducts/increment/${userId}/${productId}`, { quantity })
-            await productsCart()
+            await api.delete(`${process.env.REACT_APP_BACKEND_URL}/cartProducts/${id}`)
         } catch (error) {
+            console.log(error)
         }
+        productsCart()
     }
 
-    const totalValue = cart.reduce((accumulator, item) => {
+    // const handleQuantityChange = async (productId, userId, quantity) => {
+    //     try {
+    //         await api.patch(`${process.env.REACT_APP_BACKEND_URL}/cartProducts/increment/${userId}/${productId}`, { quantity })
+    //         await productsCart()
+    //     } catch (error) {
+    //     }
+    // }
+
+    const totalValue = Array.from(cart).reduce((accumulator, item) => {
         return accumulator + item.saleValue * item.quantity;
     }, 0);
 
@@ -91,7 +104,20 @@ export const Cart = () => {
                                         <span onClick={() => handleIncrement(item.id)}>+</span>
                                     </C.ContainerActions>
                                     <C.RowValue>{getCurrency(item.saleValue * item.quantity)}</C.RowValue>
-                                    <C.RowValue>x</C.RowValue>
+                                    <C.RowValue onClick={() => deleteProduct(item.id)}
+                                        style={{
+                                            backgroundColor: '#edf0ee',
+                                            width: '20px',
+                                            height: '20px',
+                                            borderRadius: '50%',
+                                            display: 'flex',
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                            cursor: 'pointer'
+                                        }}
+                                    >
+                                        x
+                                    </C.RowValue>
                                 </C.ContentTableRightSection>
                             </C.ContentTable>
                             <C.Line></C.Line>
