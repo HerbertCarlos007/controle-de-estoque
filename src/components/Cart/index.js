@@ -51,6 +51,12 @@ export const Cart = () => {
         } catch (error) {
         }
     }
+
+    const totalValue = cart.reduce((accumulator, item) => {
+        return accumulator + item.saleValue * item.quantity;
+    }, 0);
+
+
     return (
         <>
             <C.Header />
@@ -70,7 +76,6 @@ export const Cart = () => {
                     <C.Line></C.Line>
 
                     {cart && cart.map((item) =>
-
                         <>
                             <C.ContentTable>
                                 <C.ContentTableLeftSection>
@@ -108,17 +113,17 @@ export const Cart = () => {
                             </C.LeftSectionResume>
 
                             <C.RightSectionResume>
-                                <span>R$ 400</span>
+                                <span>R$ {getCurrency(totalValue)}</span>
                                 <span>Gratuito</span>
                             </C.RightSectionResume>
                         </C.CenterSectionResume>
                         <C.AddDiscount>Adicionar cupom de desconto</C.AddDiscount>
                         <C.DownSectionResume>
                             <C.LeftSectionResume>Total</C.LeftSectionResume>
-                            <C.RightSectionResume>R$ 200</C.RightSectionResume>
+                            <C.RightSectionResume>R$ {getCurrency(totalValue)}</C.RightSectionResume>
                         </C.DownSectionResume>
                     </C.ContainerResume>
-                    
+
                     <C.ContainerCheckout>
                         FINALIZAR COMPRA
                     </C.ContainerCheckout>

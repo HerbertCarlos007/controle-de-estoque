@@ -53,6 +53,10 @@ export const AddDiscount = styled.span`
   color: green;
   cursor: pointer;
   padding: 10px;
+  
+  :hover {
+        opacity: 0.8;
+    }
 `
 
 export const LeftSectionResume = styled.div`
@@ -175,4 +179,9 @@ export const ContainerCheckout = styled.div`
     font-weight: 600;
     font-family: Arial, Helvetica, sans-serif;
     border-radius: 5px;
+    cursor: pointer;
+    
+    :hover {
+        opacity: 0.8;
+    }
 `
