@@ -70,14 +70,14 @@ export const ShowProducts = () => {
   const getEachProducts = async (id) => {
     try {
       const response = await api.get(`${process.env.REACT_APP_BACKEND_URL}/products/${id}`)
-      const data = response.data
+      const data = response.data.dataValues
       setName(data.name)
       setAmount(data.amount)
       setBrand(data.brand)
       setPurchasePrice(data.purchasePrice)
       setSelectedId(id)
     } catch (error) {
-
+      console.log(error)
     }
   }
 
@@ -100,9 +100,8 @@ export const ShowProducts = () => {
           timer: 1500
         })
       }
-
     } catch (error) {
-      console.log(error)
+
     }
     handleCloseCreationModal()
     getProducts()
