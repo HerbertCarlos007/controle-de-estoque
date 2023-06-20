@@ -5,7 +5,7 @@ import { Modal } from '../Modal'
 import Swal from 'sweetalert2'
 import { Header } from '../Header'
 
-export const CreateProducts = ({getProducts}) => {
+export const CreateProducts = ({ getProducts }) => {
 
     const [name, setName] = useState('')
     const [amount, setAmount] = useState('')
@@ -13,7 +13,7 @@ export const CreateProducts = ({getProducts}) => {
     const [brand, setBrand] = useState('')
     const [purchasePrice, setPurchasePrice] = useState('')
     const [showCreationModal, setShowCreationModal] = useState(false)
-    const [imageUrl, setImageUrl] = useState('')
+    const [file, setFile] = useState('')
 
     const handleCreationModal = () => {
         setShowCreationModal(true)
@@ -23,46 +23,52 @@ export const CreateProducts = ({getProducts}) => {
         setShowCreationModal(false)
     }
 
-
     const handleName = (e) => {
-        const textName = e.target.value
-        setName(textName)
+        setName(e.target.value)
     }
 
     const handleDescription = (e) => {
-        const textDescription = e.target.value
-        setDescription(textDescription)
-    }
-
-    const handleImageUrl = (e) => {
-        const textImageUrl = e.target.value
-        setImageUrl(textImageUrl)
+        setDescription(e.target.value)
     }
 
     const handleAmount = (e) => {
-        const textAmount = e.target.value
-        setAmount(textAmount)
+        setAmount(e.target.value)
     }
 
     const handleBrand = (e) => {
-        const textBrand = e.target.value
-        setBrand(textBrand)
+        setBrand(e.target.value)
     }
 
     const handlePurchasePrice = (e) => {
-        const textPurchasePrice = e.target.value
-        setPurchasePrice(textPurchasePrice)
+        setPurchasePrice(e.target.value)
     }
 
-
+    const uploadImage = (e) => {
+        const file = e.target.files[0];
+        setFile(file);
+    }
 
     const registerProducts = async (e) => {
         e.preventDefault()
 
         try {
-            const response = await api.post(`${process.env.REACT_APP_BACKEND_URL}/products`,
-                { name, description, imageUrl, amount, brand, purchasePrice }
-            )
+            const formData = new FormData();
+            const config = {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            };
+            
+            formData.append('file', file);
+            formData.append('productData', JSON.stringify({
+                name,
+                description,
+                amount,
+                brand,
+                purchasePrice
+            }));
+        
+            const response = await api.post(`${process.env.REACT_APP_BACKEND_URL}/products`, formData, config)
 
             if (response.status === 201) {
                 Swal.fire({
@@ -71,10 +77,10 @@ export const CreateProducts = ({getProducts}) => {
                     title: 'Produto cadastrado com sucesso!',
                     showConfirmButton: false,
                     timer: 1500
-                }).then(
-                    handleCloseCreationModal(),
-                    getProducts()
-                )
+                }).then(() => {
+                    handleCloseCreationModal();
+                    getProducts();
+                });
             }
 
         } catch (error) {
@@ -86,7 +92,6 @@ export const CreateProducts = ({getProducts}) => {
         <>
             <Header />
             <C.Container>
-
                 <C.Title>Lista de Produtos</C.Title>
                 <C.ButtonsContainer>
                     <C.ButtonRegisterProducts onClick={handleCreationModal}>Cadastrar Produto</C.ButtonRegisterProducts>
@@ -96,16 +101,14 @@ export const CreateProducts = ({getProducts}) => {
                     <C.ModalContainer>
                         <C.InputName placeholder='Nome' onChange={handleName}></C.InputName>
                         <C.InputDescription placeholder='Descrição' onChange={handleDescription}></C.InputDescription>
-                        <C.InputImageUrl placeholder='URL' onChange={handleImageUrl}></C.InputImageUrl>
+                        <C.InputImageUrl type='file' onChange={uploadImage}></C.InputImageUrl>
                         <C.InputAmount placeholder='Quantidade' onChange={handleAmount}></C.InputAmount>
                         <C.InputBrand placeholder='Marca' onChange={handleBrand}></C.InputBrand>
                         <C.InputPurshacePrice placeholder='Valor de Custo' onChange={handlePurchasePrice}></C.InputPurshacePrice>
                         <C.ButtonRegisterModal onClick={registerProducts}>Cadastrar</C.ButtonRegisterModal>
                     </C.ModalContainer>
                 </Modal>
-
             </C.Container>
         </>
-
     )
 }
