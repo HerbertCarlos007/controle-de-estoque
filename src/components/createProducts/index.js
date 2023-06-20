@@ -58,7 +58,7 @@ export const CreateProducts = ({ getProducts }) => {
                     'Content-Type': 'multipart/form-data'
                 }
             };
-            
+
             formData.append('file', file);
             formData.append('productData', JSON.stringify({
                 name,
@@ -67,7 +67,7 @@ export const CreateProducts = ({ getProducts }) => {
                 brand,
                 purchasePrice
             }));
-        
+
             const response = await api.post(`${process.env.REACT_APP_BACKEND_URL}/products`, formData, config)
 
             if (response.status === 201) {
@@ -101,10 +101,14 @@ export const CreateProducts = ({ getProducts }) => {
                     <C.ModalContainer>
                         <C.InputName placeholder='Nome' onChange={handleName}></C.InputName>
                         <C.InputDescription placeholder='Descrição' onChange={handleDescription}></C.InputDescription>
-                        <C.InputImageUrl type='file' onChange={uploadImage}></C.InputImageUrl>
                         <C.InputAmount placeholder='Quantidade' onChange={handleAmount}></C.InputAmount>
                         <C.InputBrand placeholder='Marca' onChange={handleBrand}></C.InputBrand>
                         <C.InputPurshacePrice placeholder='Valor de Custo' onChange={handlePurchasePrice}></C.InputPurshacePrice>
+                        <label for='file'>
+                            <span>Selecione a imagem</span>
+                            <span>Procurar</span>
+                        </label>
+                        <C.InputImageUrl type='file' id='file' name='file' onChange={uploadImage}></C.InputImageUrl>
                         <C.ButtonRegisterModal onClick={registerProducts}>Cadastrar</C.ButtonRegisterModal>
                     </C.ModalContainer>
                 </Modal>
