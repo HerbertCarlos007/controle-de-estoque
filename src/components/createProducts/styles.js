@@ -60,17 +60,20 @@ export const ModalContainer = styled.div`
         border-radius: 5px;
         padding: 0 0.5rem;
         margin: 10px;
+        cursor: pointer;
     }
 
     label span:nth-child(1) {
         padding: 0.2rem;
-        opacity: 0.7;
+        opacity: 0.7;      
     }
 
     label span:nth-child(2) {
         color: #FFF;
         background-color: #412972;
-        padding: 0.25rem;
+        width: 120px;
+        padding: 3px;
+        text-align: center;
         border-radius: 5px;
     }
 `

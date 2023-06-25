@@ -7,7 +7,8 @@ import { HeaderStore } from '../HeaderStore'
 
 export const HomePageStore = () => {
 
-    const [allProducts, setAllProducts] = useState([])
+    const [products, setProducts] = useState([])
+    const [searchedProductValue, setSearchedProductValue] = useState('')
     const [isLoading, setIsLoading] = useState(false)
     const [isVisible, setIsVisible] = useState(false)
 
@@ -16,11 +17,14 @@ export const HomePageStore = () => {
 
     }, [])
 
+    useEffect(() => {
+        searchProduct()
+    }, [searchedProductValue])
 
     const showAllProducts = async () => {
         try {
             const response = await api.get(`${process.env.REACT_APP_BACKEND_URL}/products`)
-            setAllProducts(response.data.products)
+            setProducts(response.data.products)
             setIsLoading(true)
         } catch (error) {
         }
@@ -36,13 +40,24 @@ export const HomePageStore = () => {
         }
     }
 
+    const searchProduct = () => {
+        const searchedProduct = products.find((availableProduct) => availableProduct.name.toUpperCase() === searchedProductValue.toUpperCase())
+        if (!searchedProduct) return
+        setProducts([searchedProduct])
+    }
+
+    const handleSearchProduct = (e) => {
+        setSearchedProductValue(e.target.value)
+    }
+
     return (
         <>
             <SideBar isVisible={isVisible} setIsVisible={setIsVisible} />
             <C.Container onClickCapture={() => setIsVisible(false)}>
                 <HeaderStore setIsVisible={setIsVisible} />
+                <input type='text' placeholder='buscar produto' onChange={handleSearchProduct} value={searchedProductValue} />
                 <C.ContainerProducts>
-                    {allProducts && allProducts.map((product, index) =>
+                    {products && products.map((product, index) =>
                         <C.CardsProducts key={index} >
 
                             <C.ImageProduct src={product.imageUrl} />
@@ -59,7 +74,7 @@ export const HomePageStore = () => {
                     )}
                 </C.ContainerProducts>
                 {isLoading ? (
-                    (!allProducts || allProducts.length === 0) && <p>Não há projetos cadastrados</p>
+                    (!products || products.length === 0) && <p>Não há projetos cadastrados</p>
                 ) : (
                     <Load />
                 )}
