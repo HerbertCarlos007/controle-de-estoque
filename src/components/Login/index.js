@@ -13,7 +13,7 @@ export const Login = () => {
     const [confirmPassword, setConfirmPassword] = useState('')
 
     const navigate = useNavigate()
-    
+
     const switchLogin = () => {
         setIsLoggingIn(!isLoggingIn)
     }
@@ -34,13 +34,13 @@ export const Login = () => {
     }
 
     const handleClickLogin = async () => {
-        const response = await api.post(`${process.env.REACT_APP_BACKEND_URL}/auth`,{
+        const response = await api.post(`${process.env.REACT_APP_BACKEND_URL}/auth`, {
             email, password
         })
-        if(response.status === 200) {
+        if (response.status === 200) {
             localStorage.setItem('token', response.data.token)
-            navigate('/inventory')
         }
+        navigate('/inventory')
     }
 
     const handleClickRegister = async () => {
@@ -55,7 +55,7 @@ export const Login = () => {
                 {isLoggingIn ? <>
                     <C.Text>Faça seu Login</C.Text>
                     <C.InputLogin type='text' placeholder="Username" onChange={handleLogin} />
-                    <C.InputLogin type='password' placeholder="Senha" onChange={handlePassword}/>
+                    <C.InputLogin type='password' placeholder="Senha" onChange={handlePassword} />
                     <C.InputLogin
                         type='button'
                         value='Login'

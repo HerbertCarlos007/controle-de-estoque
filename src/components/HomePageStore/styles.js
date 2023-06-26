@@ -34,8 +34,9 @@ export const ContainerItens = styled.div`
 `
 
 export const TextTitle = styled.span`
-   font-size: 24px;
+   font-size: 20px;
    font-weight: 400;
+   white-space: nowrap;
 `   
 
 export const TextPrice = styled.span`

@@ -47,8 +47,14 @@ export const HomePageStore = () => {
     }
 
     const handleSearchProduct = (e) => {
-        setSearchedProductValue(e.target.value)
+        const searchValue = e.target.value;
+        setSearchedProductValue(searchValue);
+    
+        if (searchValue === "") {
+            showAllProducts()
+        }
     }
+
 
     return (
         <>
