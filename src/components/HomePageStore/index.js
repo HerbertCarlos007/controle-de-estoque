@@ -4,6 +4,7 @@ import api from '../../services/api'
 import { Load } from '../Load'
 import { SideBar } from '../SideBar'
 import { HeaderStore } from '../HeaderStore'
+import { AiOutlineSearch } from 'react-icons/ai'
 
 export const HomePageStore = () => {
 
@@ -49,7 +50,7 @@ export const HomePageStore = () => {
     const handleSearchProduct = (e) => {
         const searchValue = e.target.value;
         setSearchedProductValue(searchValue);
-    
+
         if (searchValue === "") {
             showAllProducts()
         }
@@ -60,8 +61,17 @@ export const HomePageStore = () => {
         <>
             <SideBar isVisible={isVisible} setIsVisible={setIsVisible} />
             <C.Container onClickCapture={() => setIsVisible(false)}>
+
                 <HeaderStore setIsVisible={setIsVisible} />
-                <input type='text' placeholder='buscar produto' onChange={handleSearchProduct} value={searchedProductValue} />
+                <C.InputSearch
+                    type='text'
+                    placeholder='Buscar Produto'
+                    onChange={handleSearchProduct}
+                    value={searchedProductValue}
+                />
+                <C.IconSearch>
+                    <AiOutlineSearch size={28} color='black' />
+                </C.IconSearch>
                 <C.ContainerProducts>
                     {products && products.map((product, index) =>
                         <C.CardsProducts key={index} >
