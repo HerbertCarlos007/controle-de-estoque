@@ -56,7 +56,6 @@ export const HomePageStore = () => {
         }
     }
 
-
     return (
         <>
             <SideBar isVisible={isVisible} setIsVisible={setIsVisible} />

@@ -10,7 +10,7 @@ export const Container = styled.div`
 `
 
 export const ContainerProducts = styled.div`
-    margin-top: 30px;
+    margin-top: 10px;
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(3, 300px);
@@ -80,8 +80,8 @@ export const InputSearch = styled.input`
 `
 
 export const IconSearch = styled.div`
-   position: relative;
-  bottom: 35px;
-  left: 110px;
+     position: relative;
+     bottom: 35px;
+    left: 110px;
     
 `

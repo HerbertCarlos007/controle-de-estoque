@@ -44,7 +44,7 @@ export const Login = () => {
     }
 
     const handleClickRegister = async () => {
-        const response = await api.post(`${process.env.REACT_APP_BACKEND_URL}/register`, {
+        await api.post(`${process.env.REACT_APP_BACKEND_URL}/register`, {
             email, password, confirmPassword
         })
     }
@@ -64,6 +64,7 @@ export const Login = () => {
                         color={'#fff'}
                         onClick={handleClickLogin}
                     />
+                    <C.Text onClick={() => navigate('/newPassword')}>Esqueceu sua senha?</C.Text>
                     <C.Text>Não tem cadastro? <C.LinkToRegister onClick={switchLogin}>Registre-se</C.LinkToRegister></C.Text>
                 </> :
                     <>
@@ -93,7 +94,6 @@ export const Login = () => {
                             color={'#fff'}
                             onClick={handleClickRegister}
                         />
-
                         <C.LinkToRetunToLogin onClick={switchLogin}>Voltar</C.LinkToRetunToLogin>
                     </>
                 }
