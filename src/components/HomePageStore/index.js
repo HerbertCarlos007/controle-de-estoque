@@ -61,7 +61,7 @@ export const HomePageStore = () => {
             <SideBar isVisible={isVisible} setIsVisible={setIsVisible} />
             <C.Container onClickCapture={() => setIsVisible(false)}>
 
-                <HeaderStore setIsVisible={setIsVisible} />
+                <HeaderStore setIsVisible={setIsVisible}/>
                 <C.InputSearch
                     type='text'
                     placeholder='Buscar Produto'

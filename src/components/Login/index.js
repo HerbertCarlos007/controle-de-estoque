@@ -39,8 +39,9 @@ export const Login = () => {
         })
         if (response.status === 200) {
             localStorage.setItem('token', response.data.token)
+            localStorage.setItem('id', response.data.id)
         }
-        navigate('/inventory')
+        navigate('/')
     }
 
     const handleClickRegister = async () => {
