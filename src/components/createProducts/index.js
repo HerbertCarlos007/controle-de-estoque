@@ -6,10 +6,6 @@ import Swal from 'sweetalert2'
 import { Header } from '../Header'
 
 export const CreateProducts = ({ getProducts }) => {
-    
-    useEffect(() => {
-        getUser()
-    }, [])
 
     const [name, setName] = useState('')
     const [amount, setAmount] = useState('')
@@ -18,7 +14,6 @@ export const CreateProducts = ({ getProducts }) => {
     const [purchasePrice, setPurchasePrice] = useState('')
     const [showCreationModal, setShowCreationModal] = useState(false)
     const [file, setFile] = useState('')
-    const [user, setUser] = useState({})
 
     const handleCreationModal = () => {
         setShowCreationModal(true)
@@ -53,15 +48,11 @@ export const CreateProducts = ({ getProducts }) => {
         setFile(file);
     }
 
-    const getUser = async () => {
-        const id = localStorage.getItem('id')
-        const response = await api.get(`/users/${id}`)
-        setUser(response.data.user)
-    }
 
     const registerProducts = async (e) => {
         e.preventDefault();
-    
+        const store_id = localStorage.getItem('store_id')
+
         try {
             const formData = new FormData();
             const config = {
@@ -69,22 +60,19 @@ export const CreateProducts = ({ getProducts }) => {
                     'Content-Type': 'multipart/form-data'
                 }
             };
-    
+
             formData.append('file', file);
             formData.append('productData', JSON.stringify({
                 name,
                 description,
                 amount,
                 brand,
-                purchasePrice
+                purchasePrice,
+                store_id
             }));
-    
-            if (user && user.id) {
-                formData.append('userId', user.id);
-            }
-    
+
             const response = await api.post(`${process.env.REACT_APP_BACKEND_URL}/products`, formData, config);
-    
+
             if (response.status === 201) {
                 Swal.fire({
                     position: 'center',
@@ -97,14 +85,12 @@ export const CreateProducts = ({ getProducts }) => {
                     getProducts();
                 });
             }
-            
-            console.log(user)
-    
+
         } catch (error) {
             console.log(error);
         }
     }
-        
+
     return (
         <>
             <Header />

@@ -15,16 +15,18 @@ export const HomePageStore = () => {
 
     useEffect(() => {
         showAllProducts()
-
     }, [])
+    
 
     useEffect(() => {
         searchProduct()
     }, [searchedProductValue])
 
     const showAllProducts = async () => {
+        const store_id = localStorage.getItem('store_id')
+        console.log({store_id})
         try {
-            const response = await api.get(`${process.env.REACT_APP_BACKEND_URL}/products`)
+            const response = await api.get(`${process.env.REACT_APP_BACKEND_URL}/products/${store_id}`)
             setProducts(response.data.products)
             setIsLoading(true)
         } catch (error) {
@@ -32,10 +34,12 @@ export const HomePageStore = () => {
     }
 
     const addToCart = async (productId) => {
+        const store_id = localStorage.getItem('store_id')
+        const userId = localStorage.getItem('id')
         try {
-
             await api.post(`${process.env.REACT_APP_BACKEND_URL}/cartProducts`, {
-                productId,
+                productId, store_id, userId
+                
             })
         } catch (error) {
         }
@@ -61,7 +65,7 @@ export const HomePageStore = () => {
             <SideBar isVisible={isVisible} setIsVisible={setIsVisible} />
             <C.Container onClickCapture={() => setIsVisible(false)}>
 
-                <HeaderStore setIsVisible={setIsVisible}/>
+                <HeaderStore setIsVisible={setIsVisible} />
                 <C.InputSearch
                     type='text'
                     placeholder='Buscar Produto'

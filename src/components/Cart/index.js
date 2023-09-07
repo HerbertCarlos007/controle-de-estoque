@@ -21,8 +21,10 @@ export const Cart = () => {
     };
 
     const productsCart = async () => {
+        const store_id = localStorage.getItem('store_id')
+        const userId = localStorage.getItem('id')
         try {
-            const response = await api.get(`${process.env.REACT_APP_BACKEND_URL}/cartProducts`)
+            const response = await api.get(`${process.env.REACT_APP_BACKEND_URL}/cartProducts/${userId}/${store_id}`)
             setCart(response.data)
             setIsLoading(true)
         } catch (error) {

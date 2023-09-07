@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom'
 import * as C from './styles'
 import api from '../../services/api'
@@ -6,13 +6,22 @@ import api from '../../services/api'
 import { Modal } from '../Modal'
 
 export const Login = () => {
-
     const [isLoggingIn, setIsLoggingIn] = useState(true)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
 
     const navigate = useNavigate()
+
+    useEffect(() => {
+        loadStoreData()
+    }, [])
+
+    const loadStoreData = async () => {
+        const subdomain = window.location.hostname.split(".")[0] === 'localhost' ? 'dev' : window.location.hostname.split(".")[0]
+        const response = await api.get(`${process.env.REACT_APP_BACKEND_URL}/store/${subdomain}`)
+        localStorage.setItem('store_id', response.data.id)
+    }
 
     const switchLogin = () => {
         setIsLoggingIn(!isLoggingIn)
@@ -34,20 +43,25 @@ export const Login = () => {
     }
 
     const handleClickLogin = async () => {
+        const store_id = localStorage.getItem('store_id')
         const response = await api.post(`${process.env.REACT_APP_BACKEND_URL}/auth`, {
-            email, password
+            email, password, store_id
         })
         if (response.status === 200) {
             localStorage.setItem('token', response.data.token)
-            localStorage.setItem('id', response.data.id)
+            localStorage.setItem('id', response.data.user.id)
         }
         navigate('/')
     }
 
     const handleClickRegister = async () => {
-        await api.post(`${process.env.REACT_APP_BACKEND_URL}/register`, {
-            email, password, confirmPassword
+        const store_id = localStorage.getItem("store_id")
+        console.log(store_id)
+        const response = await api.post(`${process.env.REACT_APP_BACKEND_URL}/register`, {
+            email, password, confirmPassword, store_id
         })
+
+        handleClickLogin()
     }
 
     return (

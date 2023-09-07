@@ -57,8 +57,9 @@ export const ShowProducts = () => {
   }
 
   const getProducts = async () => {
+    const store_id = localStorage.getItem('store_id')
     try {
-      const response = await api.get(`${process.env.REACT_APP_BACKEND_URL}/products`)
+      const response = await api.get(`${process.env.REACT_APP_BACKEND_URL}/products/${store_id}`)
       setProducts(response.data.products)
       allProductsRef.current = response.data.products
       setIsLoading(true)
