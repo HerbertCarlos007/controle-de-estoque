@@ -27,7 +27,7 @@ export const SideBar = ({ isVisible, setIsVisible }) => {
                         >
                             <Menu style={{ marginTop: '60px' }}>
                                 <MenuItem onClick={() => navigate('/inventory')}>Estoque</MenuItem>
-                                <MenuItem onClick={() => navigate('/')}> Loja </MenuItem>
+                                <MenuItem onClick={() => navigate('/home')}> Loja </MenuItem>
                                 <MenuItem onClick={() => navigate('/cart')}> Carrinho </MenuItem>
                                 <MenuItem> Minha conta </MenuItem>
                                 <MenuItem style={{ marginTop: '150px' }} onClick={logout} > Sair </MenuItem>

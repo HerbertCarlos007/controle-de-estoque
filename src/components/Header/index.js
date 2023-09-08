@@ -8,7 +8,7 @@ export const Header = () => {
     const navigate = useNavigate()
 
     const navigateToStore = () => {
-        navigate('/')
+        navigate('/home')
     }
 
     const navigateToLogin = () => {

@@ -19,11 +19,11 @@ function App() {
         <GlobalStyle />
         <ProSidebarProvider>
           <Routes>
+            <Route exact path='/' element={<Login />}></Route>
             <Route path='/inventory' element={<ShowProducts />}></Route>
-            <Route exact path='/' element={<HomePageStore />}></Route>
+            <Route path='/home' element={<HomePageStore />}></Route>
             <Route path='/product/:id' element={<ShowEachProduct />}></Route>
             <Route path='/cart' element={<Cart />}></Route>
-            <Route path='login' element={<Login />}></Route>
             <Route path='/recoverPassword/:id' element={<RecoverPassword />}></Route>
             <Route path='/newPassword' element={<NewPassword />}></Route>
           </Routes>

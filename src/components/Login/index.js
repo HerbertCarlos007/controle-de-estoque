@@ -51,7 +51,7 @@ export const Login = () => {
             localStorage.setItem('token', response.data.token)
             localStorage.setItem('id', response.data.user.id)
         }
-        navigate('/')
+        navigate('/home')
     }
 
     const handleClickRegister = async () => {
