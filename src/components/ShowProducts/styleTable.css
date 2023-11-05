@@ -36,3 +36,9 @@ tbody > tr:nth-of-type(odd){
     cursor: pointer;
     margin-top: 10px;
 }
+
+.empty-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

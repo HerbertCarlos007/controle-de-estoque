@@ -174,7 +174,7 @@ export const ShowProducts = () => {
 
 
       {isLoading ? (
-        (!products || products.length === 0) && <p>Não há projetos cadastrados</p>
+        (!products || products.length === 0) && <p className='empty-list'>Não há projetos cadastrados</p>
       ) : (
         <Load />
       )}

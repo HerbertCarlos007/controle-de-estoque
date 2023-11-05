@@ -12,7 +12,7 @@ export const Header = () => {
     }
 
     const navigateToLogin = () => {
-        navigate('/login')
+        navigate('/')
     }
     return (
         <C.Header>

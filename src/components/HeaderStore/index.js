@@ -17,7 +17,7 @@ export const HeaderStore = ({setIsVisible}) => {
                 </C.Menu>
                 <C.Title>Loja de Roupas</C.Title>
                 <C.Actions>
-                    <AiOutlineShoppingCart size={24} onClick={() => navigate('cart')}/>
+                    <AiOutlineShoppingCart size={24} onClick={() => navigate('/cart')}/>
                 </C.Actions>
             </C.Content>
         </C.Container>

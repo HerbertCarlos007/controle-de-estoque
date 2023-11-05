@@ -6,3 +6,4 @@ export const ModalContainer = styled.div`
     align-items: center;
     flex-direction: column;
 `
+

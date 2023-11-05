@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import * as C from './styles'
 import api from '../../services/api'
 
-import { Modal } from '../Modal'
-
 export const Login = () => {
     const [isLoggingIn, setIsLoggingIn] = useState(true)
     const [email, setEmail] = useState('')
@@ -56,7 +54,6 @@ export const Login = () => {
 
     const handleClickRegister = async () => {
         const store_id = localStorage.getItem("store_id")
-        console.log(store_id)
         const response = await api.post(`${process.env.REACT_APP_BACKEND_URL}/register`, {
             email, password, confirmPassword, store_id
         })
