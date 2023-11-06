@@ -10,11 +10,13 @@ import { Login } from './components/Login'
 import { ProSidebarProvider } from 'react-pro-sidebar';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { ToastContainer} from 'react-toastify';
 
 function App() {
 
   return (
     <>
+      <ToastContainer />
       <Router>
         <GlobalStyle />
         <ProSidebarProvider>

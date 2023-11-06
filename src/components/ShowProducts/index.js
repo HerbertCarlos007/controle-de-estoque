@@ -4,9 +4,9 @@ import { useState, useEffect, useRef } from 'react'
 import { FiEdit } from 'react-icons/fi'
 import { AiOutlineDelete } from 'react-icons/ai'
 import { Modal } from '../Modal'
-import Swal from 'sweetalert2'
 import { CreateProducts } from '../createProducts'
 import { Load } from '../Load'
+import {toastifySuccess, toastifyError, toastifyWarn, } from '../../utils/Notifications';
 
 import * as C from './styles'
 
@@ -93,16 +93,10 @@ export const ShowProducts = () => {
       })
 
       if (response.status === 204) {
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Produto atualizado com sucesso!',
-          showConfirmButton: false,
-          timer: 1500
-        })
+        toastifySuccess('Produto atualizado com sucesso!')
       }
     } catch (error) {
-
+      toastifyError('Houve um erro ao atualizar o produto!')
     }
     handleCloseCreationModal()
     getProducts()
@@ -113,17 +107,11 @@ export const ShowProducts = () => {
       const response = await api.delete(`${process.env.REACT_APP_BACKEND_URL}/products/${id}`)
 
       if (response.status === 204) {
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Produto deletado com sucesso!',
-          showConfirmButton: false,
-          timer: 1500
-        })
+        toastifyWarn('Produto deletado com sucesso')
       }
 
     } catch (error) {
-
+      toastifyError('Houve um erro ao deletar o produto!')
     }
     await getProducts()
   }

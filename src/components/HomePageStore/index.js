@@ -5,6 +5,7 @@ import { Load } from '../Load'
 import { SideBar } from '../SideBar'
 import { HeaderStore } from '../HeaderStore'
 import { AiOutlineSearch } from 'react-icons/ai'
+import {toastifySuccess, toastifyError, } from '../../utils/Notifications';
 
 export const HomePageStore = () => {
 
@@ -41,7 +42,9 @@ export const HomePageStore = () => {
                 productId, store_id, userId
                 
             })
+            toastifySuccess('Produto adicionado com sucesso!')
         } catch (error) {
+            toastifyError('Houve um error ao adicionar no carrinho!')
         }
     }
 

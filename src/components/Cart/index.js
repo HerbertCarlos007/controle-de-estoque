@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import * as C from './styles'
 import api from '../../services/api'
-import { Load } from '../Load'
+import { toastifyWarn, toastifyError } from '../../utils/Notifications'
+
 export const Cart = () => {
 
     const [cart, setCart] = useState([])
@@ -53,7 +54,9 @@ export const Cart = () => {
     const deleteProduct = async (id) => {
         try {
             await api.delete(`${process.env.REACT_APP_BACKEND_URL}/cartProducts/${id}`)
+            toastifyWarn('Produto deletado com sucesso')
         } catch (error) {
+            toastifyError('Houve um error ao deletar o produto')
             console.log(error)
         }
         productsCart()

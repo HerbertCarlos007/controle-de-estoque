@@ -2,8 +2,8 @@ import * as C from './styles'
 import { useState, useEffect } from 'react'
 import api from '../../services/api'
 import { Modal } from '../Modal'
-import Swal from 'sweetalert2'
 import { Header } from '../Header'
+import {toastifySuccess, toastifyError,} from '../../utils/Notifications';
 
 export const CreateProducts = ({ getProducts }) => {
 
@@ -74,19 +74,14 @@ export const CreateProducts = ({ getProducts }) => {
             const response = await api.post(`${process.env.REACT_APP_BACKEND_URL}/products`, formData, config);
 
             if (response.status === 201) {
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Produto cadastrado com sucesso!',
-                    showConfirmButton: false,
-                    timer: 1500
-                }).then(() => {
-                    handleCloseCreationModal();
-                    getProducts();
-                });
+                toastifySuccess('Produto cadastrado com sucesso!')
+                handleCloseCreationModal();
+                getProducts();
+
             }
 
         } catch (error) {
+            toastifyError('Houve um erro ao cadastrar o produto!')
             console.log(error);
         }
     }
