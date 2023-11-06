@@ -7,6 +7,9 @@ export const SideBar = ({ isVisible, setIsVisible }) => {
 
     const navigate = useNavigate()
 
+    const levelPermission = localStorage.getItem('level_permission');
+    const userPermission = parseInt(levelPermission)
+
     const logout = () => {
         localStorage.removeItem('token')
         navigate('/')
@@ -26,10 +29,14 @@ export const SideBar = ({ isVisible, setIsVisible }) => {
                             }}
                         >
                             <Menu style={{ marginTop: '60px' }}>
-                                <MenuItem onClick={() => navigate('/inventory')}>Estoque</MenuItem>
+                                {userPermission === 1 ? (
+                                    <>
+                                        <MenuItem onClick={() => navigate('/inventory')}>Estoque</MenuItem>
+                                        <MenuItem> Minha conta </MenuItem>
+                                    </>
+                                ) : null}
                                 <MenuItem onClick={() => navigate('/home')}> Loja </MenuItem>
                                 <MenuItem onClick={() => navigate('/cart')}> Carrinho </MenuItem>
-                                <MenuItem> Minha conta </MenuItem>
                                 <MenuItem style={{ marginTop: '150px' }} onClick={logout} > Sair </MenuItem>
                             </Menu>
                         </Sidebar>

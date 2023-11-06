@@ -8,11 +8,13 @@ import { NewPassword } from './components/NewPassword'
 import { Cart } from './components/Cart';
 import { Login } from './components/Login'
 import { ProSidebarProvider } from 'react-pro-sidebar';
-
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { ToastContainer} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
+
+  const levelPermission = localStorage.getItem('level_permission');
+  const userPermission = parseInt(levelPermission)
 
   return (
     <>
@@ -21,15 +23,18 @@ function App() {
         <GlobalStyle />
         <ProSidebarProvider>
           <Routes>
-            <Route exact path='/' element={<Login />}></Route>
-            <Route path='/inventory' element={<ShowProducts />}></Route>
-            <Route path='/home' element={<HomePageStore />}></Route>
-            <Route path='/product/:id' element={<ShowEachProduct />}></Route>
-            <Route path='/cart' element={<Cart />}></Route>
-            <Route path='/recoverPassword/:id' element={<RecoverPassword />}></Route>
-            <Route path='/newPassword' element={<NewPassword />}></Route>
+            {userPermission === 1 ? (
+              <Route path="/inventory" element={<ShowProducts />} />
+            ) : null}
+            <Route exact path='/' element={<Login />} />
+            <Route path='/home' element={<HomePageStore />} />
+            <Route path='/product/:id' element={<ShowEachProduct />} />
+            <Route path='/cart' element={<Cart />} />
+            <Route path='/recoverPassword/:id' element={<RecoverPassword />} />
+            <Route path='/newPassword' element={<NewPassword />} />
           </Routes>
         </ProSidebarProvider>
+
       </Router>
     </>
 

@@ -45,9 +45,11 @@ export const Login = () => {
         const response = await api.post(`${process.env.REACT_APP_BACKEND_URL}/auth`, {
             email, password, store_id
         })
+        console.log(response.data)
         if (response.status === 200) {
             localStorage.setItem('token', response.data.token)
             localStorage.setItem('id', response.data.user.id)
+            localStorage.setItem('level_permission', response.data.user.levelPermission)
         }
         navigate('/home')
     }
