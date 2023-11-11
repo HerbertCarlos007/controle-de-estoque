@@ -96,7 +96,7 @@ export const HomePageStore = () => {
                     )}
                 </C.ContainerProducts>
                 {isLoading ? (
-                    (!products || products.length === 0) && <p>Não há projetos cadastrados</p>
+                    (!products || products.length === 0) && <p>Não há produtos cadastrados</p>
                 ) : (
                     <Load />
                 )}

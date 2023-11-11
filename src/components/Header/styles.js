@@ -2,26 +2,42 @@ import styled from 'styled-components'
 
 export const Header = styled.div`
     width: 100%;
-    height: 55px;
-    background-color: #412972; 
+    height: 60x;
+    background-color: #412972;
+    padding: 15px;
     box-shadow: 0px 1px 8px black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 `;
 
 export const TitleHeader = styled.h3`
     color: white;
-    margin: auto;
-    position: relative;
-    left: 45px;
-    top: 15px;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+   
 `;
 
-export const LeftSide = styled.div`
+export const Menu = styled.div`
+    cursor: pointer;
+    color: white;
     display: flex;
-    justify-content: end;
-    margin-right: 15px;
-    position: relative;
-    bottom: 20px;
-    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    
+    &:hover {
+        color: rgba(0, 0, 0, 0.6);
+    }
+`
+
+export const RightSide = styled.div`
+    display: flex;
+    width: 120px;
+    justify-content: space-between;
+    align-items: center
+    
 `
 
 export const textNavBar = styled.span`

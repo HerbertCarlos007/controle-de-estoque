@@ -1,9 +1,14 @@
+import React, {useState} from 'react';
 import * as C from './styles'
-import React, { useState } from 'react';
+import './styles.css'
 import { useNavigate } from 'react-router-dom'
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { SideBar } from '../SideBar';
+import { AiOutlineMenu } from 'react-icons/ai'
 
 export const Header = () => {
+    
+    const [isVisible, setIsVisible] = useState(false)
 
     const navigate = useNavigate()
 
@@ -11,23 +16,33 @@ export const Header = () => {
         navigate('/home')
     }
 
-    const navigateToLogin = () => {
+    const logout = () => {
+        localStorage.removeItem('token')
         navigate('/')
     }
+
     return (
-        <C.Header>
-            <C.TitleHeader>Listagem de Produtos</C.TitleHeader>
-            <C.LeftSide>
-                <C.textNavBar onClick={navigateToStore}>Loja</C.textNavBar>
-                {/* <NavDropdown
-                    title="Perfil"
-                    id={`offcanvasNavbarDropdown-expand-${false}`}
-                    onClick={handleCreationModal}
-                >
-                    <NavDropdown.Item href="#action3">Configurações</NavDropdown.Item>
-                </NavDropdown> */}
-                <h2 onClick={navigateToLogin}>login</h2>
-            </C.LeftSide>
-        </C.Header>
+        <>
+            <SideBar isVisible={isVisible} setIsVisible={setIsVisible} />
+            <C.Header>
+                <C.Menu onClick={() => setIsVisible(true)}>
+                    <AiOutlineMenu size={24} />
+                </C.Menu>
+                <C.TitleHeader>Listagem de Produtos</C.TitleHeader>
+                <C.RightSide>
+                    <C.textNavBar onClick={navigateToStore}>Loja</C.textNavBar>
+                    <NavDropdown
+                        title="Perfil"
+                        id={`offcanvasNavbarDropdown-expand-${false}`}
+                        className='dropdown'
+                    >
+                        <NavDropdown.Item href="#action3">Minha conta</NavDropdown.Item>
+                        <NavDropdown.Item href="#action3">Configurações</NavDropdown.Item>
+                        <NavDropdown.Item onClick={logout}>Sair</NavDropdown.Item>
+                    </NavDropdown>
+
+                </C.RightSide>
+            </C.Header>
+        </>
     )
 }
