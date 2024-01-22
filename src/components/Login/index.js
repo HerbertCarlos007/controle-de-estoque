@@ -19,6 +19,7 @@ export const Login = () => {
         const subdomain = window.location.hostname.split(".")[0] === 'localhost' ? 'dev' : window.location.hostname.split(".")[0]
         const response = await api.get(`${process.env.REACT_APP_BACKEND_URL}/store/${subdomain}`)
         localStorage.setItem('store_id', response.data.id)
+        localStorage.setItem('banner', response.data.banner)
     }
 
     const switchLogin = () => {
@@ -45,7 +46,6 @@ export const Login = () => {
         const response = await api.post(`${process.env.REACT_APP_BACKEND_URL}/auth`, {
             email, password, store_id
         })
-        console.log(response.data)
         if (response.status === 200) {
             localStorage.setItem('token', response.data.token)
             localStorage.setItem('id', response.data.user.id)
@@ -62,9 +62,13 @@ export const Login = () => {
 
         handleClickLogin()
     }
+    
+    const getBanner = localStorage.getItem('banner')
+    console.log(getBanner)
 
     return (
         <C.Container>
+            <C.Banner src={getBanner} alt="teste"/>
             <C.ContainerLogin>
                 {isLoggingIn ? <>
                     <C.Text>Faça seu Login</C.Text>
