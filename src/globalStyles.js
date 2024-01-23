@@ -6,6 +6,6 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         border: 0;
         box-sizing: border-box;
-        font-family: 'Times New Roman', Times, serif      
+        font-family: Montserrat    
     }
 `;
