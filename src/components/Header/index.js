@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {Children, useState} from 'react';
 import * as C from './styles'
 import './styles.css'
 import { useNavigate } from 'react-router-dom'
@@ -6,7 +6,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { SideBar } from '../SideBar';
 import { AiOutlineMenu } from 'react-icons/ai'
 
-export const Header = () => {
+export const Header = ({children}) => {
     
     const [isVisible, setIsVisible] = useState(false)
 
@@ -28,7 +28,7 @@ export const Header = () => {
                 <C.Menu onClick={() => setIsVisible(true)}>
                     <AiOutlineMenu size={24} />
                 </C.Menu>
-                <C.TitleHeader>Listagem de Produtos</C.TitleHeader>
+                <C.TitleHeader>{children}</C.TitleHeader>
                 <C.RightSide>
                     <C.textNavBar onClick={navigateToStore}>Loja</C.textNavBar>
                     <NavDropdown

@@ -88,7 +88,7 @@ export const CreateProducts = ({ getProducts }) => {
 
     return (
         <>
-            <Header />
+            <Header>Listagem de Produtos</Header>
             <C.Container>
                 <C.Title>Lista de Produtos</C.Title>
                 <C.ButtonsContainer>

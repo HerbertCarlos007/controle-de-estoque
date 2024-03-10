@@ -32,7 +32,7 @@ export const SideBar = ({ isVisible, setIsVisible }) => {
                                 {userPermission === 1 ? (
                                     <>
                                         <MenuItem onClick={() => navigate('/inventory')}>Estoque</MenuItem>
-                                        <MenuItem> Configurações </MenuItem>
+                                        <MenuItem onClick={() => navigate('/configuration')}> Configurações </MenuItem>
                                     </>
                                 ) : null}
                                 <MenuItem onClick={() => navigate('/home')}> Loja </MenuItem>

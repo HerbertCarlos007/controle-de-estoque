@@ -10,6 +10,7 @@ import { Login } from './components/Login'
 import { ProSidebarProvider } from 'react-pro-sidebar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
+import { Configuration } from './components/Configuration';
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
             <Route path='/cart' element={<Cart />} />
             <Route path='/recoverPassword/:id' element={<RecoverPassword />} />
             <Route path='/newPassword' element={<NewPassword />} />
+            <Route path='/configuration' element={<Configuration />} />
           </Routes>
         </ProSidebarProvider>
 
