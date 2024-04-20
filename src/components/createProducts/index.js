@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import api from '../../services/api'
 import { Modal } from '../Modal'
 import { Header } from '../Header'
-import {toastifySuccess, toastifyError,} from '../../utils/Notifications';
+import { toastifySuccess, toastifyError, } from '../../utils/Notifications';
 
 export const CreateProducts = ({ getProducts }) => {
 
