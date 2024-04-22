@@ -3,7 +3,8 @@ import styled from 'styled-components'
 export const Header = styled.div`
     width: 100%;
     height: 60x;
-    background-color: #412972;
+    background-image: linear-gradient(45deg,black,rgb(103, 130, 204, 0.9));
+    color: #FFF;
     padding: 15px;
     box-shadow: 0px 1px 8px black;
     display: flex;

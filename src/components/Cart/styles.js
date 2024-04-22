@@ -4,13 +4,18 @@ import styled from "styled-components";
 export const Header = styled.div`
     width: 100%;
     height: 80px;
-    background-color: #412972;
+    background-image: linear-gradient(45deg,black,rgb(103, 130, 204, 0.9));
 `
 
 export const Container = styled.div`
     display: flex;
     margin: 100px;
     gap: 30px;
+`
+
+export const Background = styled.div`
+     background-image: linear-gradient(45deg,black,rgb(103, 130, 204, 0.6));
+     height: 100vh;
 `
 
 export const ContainerCart = styled.div`

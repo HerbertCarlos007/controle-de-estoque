@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.div`
     width: 100%;
     height: 70px;
-    background-color: #412972;
+    background-image: linear-gradient(45deg,black,rgb(103, 130, 204, 0.9));
     color: #FFF;
 `
 

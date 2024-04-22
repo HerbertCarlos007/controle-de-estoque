@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    background-color: black;
+      background-image: linear-gradient(45deg,black,rgb(103, 130, 204, 0.6));
     min-height: 100vh;
     display: flex;
     flex-direction: column;

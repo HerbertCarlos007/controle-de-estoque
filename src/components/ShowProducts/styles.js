@@ -5,5 +5,6 @@ export const ModalContainer = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    
 `
 

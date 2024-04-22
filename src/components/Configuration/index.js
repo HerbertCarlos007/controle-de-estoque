@@ -48,6 +48,7 @@ export const Configuration = () => {
       await api.post(`${process.env.REACT_APP_BACKEND_URL}/customFields`, {
          name, logo, background, colors, store_id
       })
+      
    }
 
    return (

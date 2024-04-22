@@ -6,7 +6,7 @@ import { AiOutlineDelete } from 'react-icons/ai'
 import { Modal } from '../Modal'
 import { CreateProducts } from '../createProducts'
 import { Load } from '../Load'
-import {toastifySuccess, toastifyError, toastifyWarn, } from '../../utils/Notifications';
+import { toastifySuccess, toastifyError, toastifyWarn, } from '../../utils/Notifications';
 
 import * as C from './styles'
 
@@ -118,54 +118,56 @@ export const ShowProducts = () => {
 
   return (
     <>
-      <CreateProducts getProducts={getProducts} />
-      <div className='container'>
-        <table className="table responsive">
-          <thead>
-            <tr>
-              <th scope="col"><center>ID</center></th>
-              <th scope="col"><center>Nome</center></th>
-              <th scope="col"><center>Quantidade</center></th>
-              <th scope="col"><center>Marca</center></th>
-              <th scope="col"><center>Preço de custo</center></th>
-              <th scope="col"><center>Preço de venda</center></th>
-              <th scope="col" ><center>Alterar</center></th>
-              <th scope="col"><center>Excluir</center></th>
-            </tr>
-          </thead>
-          <tbody>
-            {products && products.map((product, index) =>
+      <div className='teste'>
+        <CreateProducts getProducts={getProducts} />
+        <div className='container'>
+          <table className="table responsive">
+            <thead>
               <tr>
-                <th scope="row"><center>{index + 1}</center></th>
-                <td><center>{product.name}</center></td>
-                <td><center>{product.amount}</center></td>
-                <td><center>{product.brand}</center></td>
-                <td><center>R$ {product.purchasePrice}</center></td>
-                <td><center>R$ {product.saleValue}</center></td>
-                <td onClick={() => getEachProducts(product.id)} ><center><FiEdit onClick={handleCreationModal} /></center></td>
-                <td><center><AiOutlineDelete onClick={() => deleteProducts(product.id)} /></center></td>
+                <th scope="col"><center>ID</center></th>
+                <th scope="col"><center>Nome</center></th>
+                <th scope="col"><center>Quantidade</center></th>
+                <th scope="col"><center>Marca</center></th>
+                <th scope="col"><center>Preço de custo</center></th>
+                <th scope="col"><center>Preço de venda</center></th>
+                <th scope="col" ><center>Alterar</center></th>
+                <th scope="col"><center>Excluir</center></th>
               </tr>
-            )}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {products && products.map((product, index) =>
+                <tr>
+                  <th scope="row"><center>{index + 1}</center></th>
+                  <td><center>{product.name}</center></td>
+                  <td><center>{product.amount}</center></td>
+                  <td><center>{product.brand}</center></td>
+                  <td><center>R$ {product.purchasePrice}</center></td>
+                  <td><center>R$ {product.saleValue}</center></td>
+                  <td onClick={() => getEachProducts(product.id)} ><center><FiEdit onClick={handleCreationModal} /></center></td>
+                  <td><center><AiOutlineDelete onClick={() => deleteProducts(product.id)} /></center></td>
+                </tr>
+              )}
+            </tbody>
+          </table>
 
-        <Modal show={showCreationModal} onClose={handleCloseCreationModal}>
-          <C.ModalContainer>
-            <input type='text' className='inputs-modal' placeholder='Nome' onChange={handleName} value={name} />
-            <input type='text' className='inputs-modal' placeholder='Quantidade' onChange={handleAmount} value={amount} />
-            <input type='text' className='inputs-modal' placeholder='Marca' onChange={handleBrand} value={brand} />
-            <input type='text' className='inputs-modal' placeholder='Preço de custo' onChange={handlePurchasePrice} value={purchasePrice} />
-            <button className='button-modal-update-produto' onClick={() => updateProducts(selectedId)}>Atualizar Produto</button>
-          </C.ModalContainer>
-        </Modal>
+          <Modal show={showCreationModal} onClose={handleCloseCreationModal}>
+            <C.ModalContainer>
+              <input type='text' className='inputs-modal' placeholder='Nome' onChange={handleName} value={name} />
+              <input type='text' className='inputs-modal' placeholder='Quantidade' onChange={handleAmount} value={amount} />
+              <input type='text' className='inputs-modal' placeholder='Marca' onChange={handleBrand} value={brand} />
+              <input type='text' className='inputs-modal' placeholder='Preço de custo' onChange={handlePurchasePrice} value={purchasePrice} />
+              <button className='button-modal-update-produto' onClick={() => updateProducts(selectedId)}>Atualizar Produto</button>
+            </C.ModalContainer>
+          </Modal>
+        </div>
+
+
+        {isLoading ? (
+          (!products || products.length === 0) && <p className='empty-list'>Não há produtos cadastrados</p>
+        ) : (
+          <Load />
+        )}
       </div>
-
-
-      {isLoading ? (
-        (!products || products.length === 0) && <p className='empty-list'>Não há produtos cadastrados</p>
-      ) : (
-        <Load />
-      )}
     </>
   )
 }
