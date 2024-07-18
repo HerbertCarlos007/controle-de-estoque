@@ -5,13 +5,11 @@ export const Container = styled.div`
 display: flex;
 justify-content: center;
 align-items: center;
-flex-direction: column;
 background-image: linear-gradient(45deg,black,rgb(103, 130, 204, 0.6));
 height: 100vh;
 `
 
 export const Content = styled.div`
-   
 `
 
 export const UploadImagens = styled.label`

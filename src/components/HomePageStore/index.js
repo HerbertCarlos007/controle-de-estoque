@@ -69,7 +69,7 @@ export const HomePageStore = () => {
             <C.Container onClickCapture={() => setIsVisible(false)}>
 
                 <HeaderStore setIsVisible={setIsVisible} />
-                <C.InputSearch
+                {/* <C.InputSearch
                     type='text'
                     placeholder='Buscar Produto'
                     onChange={handleSearchProduct}
@@ -77,7 +77,7 @@ export const HomePageStore = () => {
                 />
                 <C.IconSearch>
                     <AiOutlineSearch size={28} color='black' />
-                </C.IconSearch>
+                </C.IconSearch> */}
                 <C.ContainerProducts>
                     {products && products.map((product, index) =>
                         <C.CardsProducts key={index} >

@@ -2,20 +2,46 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     width: 100%;
-    height: 70px;
-    background-image: linear-gradient(45deg,black,rgb(103, 130, 204, 0.9));
+    height: 40px;
+    background-color: #272727;
+    justify-content: flex-end;
     color: #FFF;
+    display: flex;
 `
 
 export const Content = styled.div`
-    height: 70px;
+    width: 600px;
+    gap: 20px;
+    height: 40px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding-left: 30px;
     padding-right: 30px;
 
 `
+
+export const Line = styled.div`
+    color: #FFF;
+    width: 30px;
+    height: 40px;
+`
+
+
+export const Actions = styled.div`
+    position: relative;
+    padding-right: 20px;
+    cursor: pointer;
+
+    &:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 1px;
+        background-color: #FFF;
+    }
+`;
 
 export const Menu = styled.div`
     cursor: pointer;
@@ -29,10 +55,10 @@ export const Title = styled.span`
     font-size: 24px;
 `
 
-export const Actions = styled.div`
-    cursor: pointer;
+// export const Actions = styled.div`
+//     cursor: pointer;
 
-    &:hover {
-        color: rgba(0, 0, 0, 0.6);
-    }
-`
+//     &:hover {
+//         color: rgba(0, 0, 0, 0.6);
+//     }
+// `

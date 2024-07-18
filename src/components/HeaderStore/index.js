@@ -12,13 +12,19 @@ export const HeaderStore = ({setIsVisible}) => {
     return (
         <C.Container>
             <C.Content>
-                <C.Menu onClick={() => setIsVisible(true)}>
+                {/* <C.Menu onClick={() => setIsVisible(true)}>
                     <AiOutlineMenu size={24} />
                 </C.Menu>
                 <C.Title>Loja de Roupas</C.Title>
                 <C.Actions>
                     <AiOutlineShoppingCart size={24} onClick={() => navigate('/cart')}/>
-                </C.Actions>
+                </C.Actions> */}
+                <C.Actions>Meus pedidos</C.Actions>
+               
+                <C.Actions>Entre ou cadastre-se</C.Actions>
+                
+                <C.Actions>Meu carrinho</C.Actions>
+                
             </C.Content>
         </C.Container>
     )

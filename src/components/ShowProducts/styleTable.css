@@ -1,9 +1,10 @@
 tbody > tr:nth-of-type(odd){
-    background-color: rgb(236, 236, 236);
+    background-color: black;
 }
 
 .table {
     width: 80%;
+    color: white
 }
 
 .container {
