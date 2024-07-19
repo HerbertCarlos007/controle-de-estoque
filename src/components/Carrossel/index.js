@@ -43,12 +43,20 @@ export const Carrossel = () => {
   return (
     <>
       <div ref={sliderRef} className="keen-slider">
-        <div className="keen-slider__slide number-slide1">1</div>
-        <div className="keen-slider__slide number-slide2">2</div>
-        <div className="keen-slider__slide number-slide3">3</div>
-        <div className="keen-slider__slide number-slide4">4</div>
-        <div className="keen-slider__slide number-slide5">5</div>
-        <div className="keen-slider__slide number-slide6">6</div>
+        <div className="keen-slider__slide number-slide1">
+          <img src="https://img.lojasrenner.com.br/banner/01-home/P01_240718_HOME_CARROSSEL_PREVIEW-PV_DESK_FEMININO.jpg"/>
+        </div>
+        <div className="keen-slider__slide number-slide2">
+          <img src="https://abramark.com.br/wp-content/uploads/2022/12/bannernoticias-renner.png"/>
+        </div>
+        <div className="keen-slider__slide number-slide3">
+          <img src="https://grandesnomesdapropaganda.com.br/wp-content/uploads/2020/12/Renner.jpg"/>
+        </div>
+        <div className="keen-slider__slide number-slide4">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbys-M56xGaFl7SohaDspYkj73AaZA77tq4Q&s"/>
+        </div>
+        {/* <div className="keen-slider__slide number-slide5">5</div>
+        <div className="keen-slider__slide number-slide6">6</div> */}
       </div>
     </>
   )

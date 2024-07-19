@@ -6,6 +6,8 @@ import { SideBar } from '../SideBar'
 import { HeaderStore } from '../HeaderStore'
 import { AiOutlineSearch } from 'react-icons/ai'
 import {toastifySuccess, toastifyError, } from '../../utils/Notifications';
+import { Carrossel } from '../Carrossel'
+import { IoPersonSharp } from "react-icons/io5";
 
 export const HomePageStore = () => {
 
@@ -62,6 +64,8 @@ export const HomePageStore = () => {
             showAllProducts()
         }
     }
+    
+    
 
     return (
         <>
@@ -69,6 +73,19 @@ export const HomePageStore = () => {
             <C.Container onClickCapture={() => setIsVisible(false)}>
 
                 <HeaderStore setIsVisible={setIsVisible} />
+                
+                <C.TopSection>
+                    <C.StoreName>STORE NAME</C.StoreName>
+                    <C.ContainerFilters>
+                        <C.OptionFilters>FEMININO</C.OptionFilters>
+                        <C.OptionFilters>MASCULINO</C.OptionFilters>
+                        <C.OptionFilters>INFANTIL</C.OptionFilters>
+                        <C.OptionFilters>CALÇADOS</C.OptionFilters>
+                    </C.ContainerFilters>
+                </C.TopSection>
+                
+                
+                <Carrossel></Carrossel>
                 {/* <C.InputSearch
                     type='text'
                     placeholder='Buscar Produto'
@@ -86,11 +103,13 @@ export const HomePageStore = () => {
                             <C.ContainerItens>
                                 <C.TextTitle>{product.name}</C.TextTitle>
                                 <C.TextPrice>R$ {product.saleValue}</C.TextPrice>
+                                
                             </C.ContainerItens>
-                            <C.ContaineButton>
+                           
+                            {/* <C.ContaineButton>
 
                                 <C.ButtonAddToCart onClick={() => addToCart(product.id)}>Adicionar ao carrinho</C.ButtonAddToCart>
-                            </C.ContaineButton>
+                            </C.ContaineButton> */}
                         </C.CardsProducts>
 
                     )}

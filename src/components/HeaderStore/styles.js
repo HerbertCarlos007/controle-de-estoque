@@ -28,9 +28,12 @@ export const Line = styled.div`
 
 
 export const Actions = styled.div`
+    display: flex;
     position: relative;
     padding-right: 20px;
     cursor: pointer;
+    align-items: center;
+    justify-content: center;
 
     &:not(:last-child)::after {
         content: '';
@@ -42,6 +45,12 @@ export const Actions = styled.div`
         background-color: #FFF;
     }
 `;
+
+export const Icons = styled.div`
+    position: relative;
+    right: 10px;
+`
+
 
 export const Menu = styled.div`
     cursor: pointer;

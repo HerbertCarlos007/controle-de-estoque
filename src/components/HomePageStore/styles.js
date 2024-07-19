@@ -9,32 +9,52 @@ export const Container = styled.div`
     
 `
 
+export const TopSection = styled.div`
+    width: 900px;
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+`
+
+export const StoreName = styled.h2`
+`
+
+export const ContainerFilters = styled.div`
+    display: flex;
+    gap: 30px;
+
+`
+
+export const OptionFilters = styled.span`
+    cursor: pointer;
+    font-weight: bold;
+`
+
 export const ContainerProducts = styled.div`
-    margin-top: 10px;
+    margin-top: 40px;
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(3, 300px);
+    grid-template-columns: repeat(4, 300px);
     flex-wrap: wrap;
     justify-items: center;
 `
 export const CardsProducts = styled.div`
    background-color: white;
     width: 280px;
-    height: 370px;
    display: flex;
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   border-radius: 5px;
+   border-radius: 2px;
    margin-bottom: 20px;
+   cursor: pointer;
 `
-
 export const ContainerItens = styled.div`
     display: flex;
     flex-direction: column;
     margin-right: auto;
-    margin-left: 25px;
-    
 `
 
 export const TextTitle = styled.span`
@@ -50,8 +70,6 @@ export const TextPrice = styled.span`
 
 export const ImageProduct = styled.img`
     border-radius: 8px;
-    width: 200px;
-    height: 200px;
     
 `
 
