@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import * as C from './styles'
 import api from '../../services/api'
 import { toastifyWarn, toastifyError } from '../../utils/Notifications'
+import { FaRegTrashAlt } from "react-icons/fa";
 
-export const Cart = () => {
+export const Cart = ({ isVisible, setIsVisible }) => {
 
     const [cart, setCart] = useState([])
     const [quantity, setQuantity] = useState(1)
@@ -74,96 +75,166 @@ export const Cart = () => {
         return accumulator + item.saleValue * item.quantity;
     }, 0);
 
+    const hideExcessiveLongNames = (name) => {
+        if (name.length > 20) {
+            return name.slice(0, 20) + "...";
+        } else {
+            return name;
+        }
+    }
+
 
     return (
         <>
-            <C.Background>
-            <C.Header />
-                <C.Container>
-                    <C.ContainerCart>
-                        <C.HeaderTable>
-                            <C.HeaderLeftSection>
-                                <C.ColumnValue>Produto</C.ColumnValue>
-                            </C.HeaderLeftSection>
-                            <C.HeaderRightSection>
-                                <C.ColumnValue>Preço</C.ColumnValue>
-                                <C.ColumnValue>Quantidade</C.ColumnValue>
-                                <C.ColumnValue>Total</C.ColumnValue>
-                                <C.ColumnValue>-</C.ColumnValue>
-                            </C.HeaderRightSection>
-                        </C.HeaderTable>
-                        <C.Line></C.Line>
-
-                        {cart && cart.map((item) =>
-                            <>
-                                <C.ContentTable>
-                                    <C.ContentTableLeftSection>
-                                        <C.ProductImage src={item.imageUrl} />
-                                        <span>{item.name}</span>
-                                    </C.ContentTableLeftSection>
-
-                                    <C.ContentTableRightSection>
-                                        <C.RowValue>R$ {item.saleValue}</C.RowValue>
-                                        <C.ContainerActions>
-                                            <span onClick={() => handleDecrement(item.id)}>-</span>
-                                            <span>{item.quantity}</span>
-                                            <span onClick={() => handleIncrement(item.id)}>+</span>
-                                        </C.ContainerActions>
-                                        <C.RowValue>{getCurrency(item.saleValue * item.quantity)}</C.RowValue>
-                                        <C.RowValue onClick={() => deleteProduct(item.id)}
-                                            style={{
-                                                backgroundColor: '#edf0ee',
-                                                width: '20px',
-                                                height: '20px',
-                                                borderRadius: '50%',
-                                                display: 'flex',
-                                                justifyContent: 'center',
-                                                alignItems: 'center',
-                                                cursor: 'pointer'
-                                            }}
-                                        >
-                                            x
-                                        </C.RowValue>
-                                    </C.ContentTableRightSection>
-                                </C.ContentTable>
+            {isVisible && (
+                <>
+                    {/* <C.Background>
+                        <C.Header />
+                        <C.Container>
+                            <C.ContainerCart>
+                                <C.HeaderTable>
+                                    <C.HeaderLeftSection>
+                                        <C.ColumnValue>Produto</C.ColumnValue>
+                                    </C.HeaderLeftSection>
+                                    <C.HeaderRightSection>
+                                        <C.ColumnValue>Preço</C.ColumnValue>
+                                        <C.ColumnValue>Quantidade</C.ColumnValue>
+                                        <C.ColumnValue>Total</C.ColumnValue>
+                                        <C.ColumnValue>-</C.ColumnValue>
+                                    </C.HeaderRightSection>
+                                </C.HeaderTable>
                                 <C.Line></C.Line>
-                            </>
-                        )}
-                    </C.ContainerCart>
 
-                    <C.Teste>
+                                {cart && cart.map((item) =>
+                                    <>
+                                        <C.ContentTable>
+                                            <C.ContentTableLeftSection>
+                                                <C.ProductImage src={item.imageUrl} />
+                                                <span>{item.name}</span>
+                                            </C.ContentTableLeftSection>
 
-                        <C.ContainerResume>
-                            <C.TopSectionResume>
-                                <C.TitleContainerResume>Resumo da compra</C.TitleContainerResume>
-                            </C.TopSectionResume>
-                            <C.LineResume></C.LineResume>
-                            <C.CenterSectionResume>
-                                <C.LeftSectionResume>
-                                    <span>Sub-Total</span>
-                                    <span>Frete</span>
-                                </C.LeftSectionResume>
+                                            <C.ContentTableRightSection>
+                                                <C.RowValue>R$ {item.saleValue}</C.RowValue>
+                                                <C.ContainerActions>
+                                                    <span onClick={() => handleDecrement(item.id)}>-</span>
+                                                    <span>{item.quantity}</span>
+                                                    <span onClick={() => handleIncrement(item.id)}>+</span>
+                                                </C.ContainerActions>
+                                                <C.RowValue>{getCurrency(item.saleValue * item.quantity)}</C.RowValue>
+                                                <C.RowValue onClick={() => deleteProduct(item.id)}
+                                                    style={{
+                                                        backgroundColor: '#edf0ee',
+                                                        width: '20px',
+                                                        height: '20px',
+                                                        borderRadius: '50%',
+                                                        display: 'flex',
+                                                        justifyContent: 'center',
+                                                        alignItems: 'center',
+                                                        cursor: 'pointer'
+                                                    }}
+                                                >
+                                                    x
+                                                </C.RowValue>
+                                            </C.ContentTableRightSection>
+                                        </C.ContentTable>
+                                        <C.Line></C.Line>
+                                    </>
+                                )}
+                            </C.ContainerCart>
 
-                                <C.RightSectionResume>
-                                    <span>R$ {getCurrency(totalValue)}</span>
-                                    <span>Gratuito</span>
-                                </C.RightSectionResume>
-                            </C.CenterSectionResume>
-                            <C.AddDiscount>Adicionar cupom de desconto</C.AddDiscount>
-                            <C.DownSectionResume>
-                                <C.LeftSectionResume>Total</C.LeftSectionResume>
-                                <C.RightSectionResume>R$ {getCurrency(totalValue)}</C.RightSectionResume>
-                            </C.DownSectionResume>
-                        </C.ContainerResume>
+                            <C.Teste>
 
-                        <C.ContainerCheckout>
-                            FINALIZAR COMPRA
-                        </C.ContainerCheckout>
-                    </C.Teste>
+                                <C.ContainerResume>
+                                    <C.TopSectionResume>
+                                        <C.TitleContainerResume>Resumo da compra</C.TitleContainerResume>
+                                    </C.TopSectionResume>
+                                    <C.LineResume></C.LineResume>
+                                    <C.CenterSectionResume>
+                                        <C.LeftSectionResume>
+                                            <span>Sub-Total</span>
+                                            <span>Frete</span>
+                                        </C.LeftSectionResume>
+
+                                        <C.RightSectionResume>
+                                            <span>R$ {getCurrency(totalValue)}</span>
+                                            <span>Gratuito</span>
+                                        </C.RightSectionResume>
+                                    </C.CenterSectionResume>
+                                    <C.AddDiscount>Adicionar cupom de desconto</C.AddDiscount>
+                                    <C.DownSectionResume>
+                                        <C.LeftSectionResume>Total</C.LeftSectionResume>
+                                        <C.RightSectionResume></C.RightSectionResume>
+                                    </C.DownSectionResume>
+                                </C.ContainerResume>
+
+                                <C.ContainerCheckout>
+                                    FINALIZAR COMPRA
+                                </C.ContainerCheckout>
+                            </C.Teste>
 
 
-                </C.Container>
-            </C.Background>
+                        </C.Container>
+                    </C.Background>             */}
+
+                    <C.Container>
+                        <C.HeaderCart>
+                            <C.Title>Meu carrinho</C.Title>
+                            <C.ButtonClose onClick={() => setIsVisible(false)}>X</C.ButtonClose>
+                        </C.HeaderCart>
+
+                        <C.CartItens>
+                            {cart && cart.map((item) =>
+                                <C.Card>
+                                    <C.ContentCard>
+                                        <C.ProductImage >
+                                            <C.Image src={item.imageUrl} />
+                                        </C.ProductImage>
+                                        <C.ProductInfo>
+                                            <C.ProductName title={item.name}>{hideExcessiveLongNames(item.name)}</C.ProductName>
+
+                                            <C.Info>
+                                                <C.ProductColor>Cor: Vermelho</C.ProductColor>
+                                                <C.ProductSize>Tamanho: GG</C.ProductSize>
+                                                <C.SectionPriceAndQuantity>
+                                                    <C.Price>R$ {item.saleValue}</C.Price>
+                                                    <C.TextQuantity>Qtde: {item.quantity}</C.TextQuantity>
+                                                </C.SectionPriceAndQuantity>
+
+                                            </C.Info>
+
+                                        </C.ProductInfo>
+
+                                        <C.ProductRemove>
+                                            <FaRegTrashAlt color='red' />
+                                        </C.ProductRemove>
+                                    </C.ContentCard>
+                                </C.Card>
+
+
+                            )}
+                        </C.CartItens>
+
+                        <C.InfoItens>
+                            <C.Texts>Valor total</C.Texts>
+                            <C.FinalValue>
+                                <C.TypePayments>PIX:</C.TypePayments>
+                                <C.Value>R$ {getCurrency(totalValue)}</C.Value>
+                            </C.FinalValue>
+
+                            <C.FinalValue>
+                                <C.TypePayments>Cartão:</C.TypePayments>
+                                <C.Value>6x de R$ {getCurrency(totalValue / 6) }</C.Value>
+                            </C.FinalValue>
+
+                        </C.InfoItens>
+
+                        <C.Checkout>
+                            <C.ButtonCheckout>FINALIZAR COMPRA</C.ButtonCheckout>
+                        </C.Checkout>
+                    </C.Container>
+                    <C.Overlay></C.Overlay>
+                </>
+            )}
         </>
     )
 }

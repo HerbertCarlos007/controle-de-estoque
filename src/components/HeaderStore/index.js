@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import * as C from './styles'
 import { useNavigate } from 'react-router-dom'
 import { AiOutlineMenu } from 'react-icons/ai'
@@ -9,36 +9,29 @@ import { GiLockedChest } from "react-icons/gi";
 
 
 
-export const HeaderStore = ({ setIsVisible }) => {
+export const HeaderStore = ({setIsVisible}) => {
 
     const navigate = useNavigate()
 
     return (
         <C.Container>
             <C.Content>
-                {/* <C.Menu onClick={() => setIsVisible(true)}>
-                    <AiOutlineMenu size={24} />
-                </C.Menu>
-                <C.Title>Loja de Roupas</C.Title>
-                <C.Actions>
-                    <AiOutlineShoppingCart size={24} onClick={() => navigate('/cart')}/>
-                </C.Actions> */}
-                <C.Actions>
+                <C.Actions >
                     <C.Icons>
                         <GiLockedChest />
                     </C.Icons>
                     Meus pedidos
                 </C.Actions>
 
-                <C.Actions>
+                <C.Actions onClick={() => navigate('/')}>
                     <C.Icons>
                         <IoPersonSharp size={18} />
                     </C.Icons>
                     Entre ou cadastre-se
                 </C.Actions>
 
-                <C.Actions>
-                    <C.Icons>
+                <C.Actions onClick={() => setIsVisible(true)}>
+                    <C.Icons >
                         <PiShoppingCartBold size={18} />
                     </C.Icons>
                     Meu carrinho

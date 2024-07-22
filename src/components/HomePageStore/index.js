@@ -8,6 +8,7 @@ import { AiOutlineSearch } from 'react-icons/ai'
 import {toastifySuccess, toastifyError, } from '../../utils/Notifications';
 import { Carrossel } from '../Carrossel'
 import { IoPersonSharp } from "react-icons/io5";
+import { Cart } from '../Cart'
 
 export const HomePageStore = () => {
 
@@ -69,8 +70,9 @@ export const HomePageStore = () => {
 
     return (
         <>
-            <SideBar isVisible={isVisible} setIsVisible={setIsVisible} />
-            <C.Container onClickCapture={() => setIsVisible(false)}>
+            {/* <SideBar isVisible={isVisible} setIsVisible={setIsVisible} /> */}
+            <C.Container>
+            <Cart isVisible={isVisible} setIsVisible={setIsVisible}/>
 
                 <HeaderStore setIsVisible={setIsVisible} />
                 
@@ -97,7 +99,7 @@ export const HomePageStore = () => {
                 </C.IconSearch> */}
                 <C.ContainerProducts>
                     {products && products.map((product, index) =>
-                        <C.CardsProducts key={index} >
+                        <C.CardsProducts key={index} onClick={() => addToCart(product.id)}>
 
                             <C.ImageProduct src={product.imageUrl} />
                             <C.ContainerItens>
@@ -108,7 +110,7 @@ export const HomePageStore = () => {
                            
                             {/* <C.ContaineButton>
 
-                                <C.ButtonAddToCart onClick={() => addToCart(product.id)}>Adicionar ao carrinho</C.ButtonAddToCart>
+                                <C.ButtonAddToCart >Adicionar ao carrinho</C.ButtonAddToCart>
                             </C.ContaineButton> */}
                         </C.CardsProducts>
 

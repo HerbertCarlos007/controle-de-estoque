@@ -8,9 +8,180 @@ export const Header = styled.div`
 `
 
 export const Container = styled.div`
+    width: 430px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #FFF;
+    z-index: 9999;
+`
+
+export const Overlay = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9998;
+    background-color: black;
+    opacity: 50%;
+`
+
+export const HeaderCart = styled.div`
+    background-color: #0e0e0d;
+    height: 80px;
     display: flex;
-    margin: 100px;
-    gap: 30px;
+    justify-content: space-between;
+    padding: 20px;
+    
+`
+
+export const Title = styled.span`
+    color: #FFF;
+    font-weight: bold;
+`
+
+export const ButtonClose = styled.span`
+    color: #FFF;
+    font-weight: bold;
+    cursor: pointer;
+`
+
+export const CartItens = styled.div`
+    min-height: calc(100vh - 315px);
+    max-height: calc(100vh - 315px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 5px 10px;
+    padding: 0;
+`
+
+export const Card = styled.div`
+    padding: 12px 20px;
+    margin: 15px;
+    border-radius: 8px;
+    border: 1px solid #e6e6e6;
+    min-height: 115px;
+    position: relative;
+    box-shadow: 0px 0px 7px 2px #e6e6e6;
+`
+
+export const ContentCard = styled.div`
+    display: flex; 
+    justify-content: space-between;
+`
+
+export const InfoItens = styled.div`
+    padding: 20px;
+    background: #f2f2f2;
+    border-top: #e1e1e1;
+    flex-direction: column;
+    display: flex;
+`
+
+export const Texts = styled.h5`
+`
+
+export const TypePayments = styled.span`
+`
+
+export const Value = styled.span`
+    font-weight: bold;
+    color: #00805b;
+`
+
+export const FinalValue = styled.div`
+    border-bottom: 1px solid #e1e1e1;
+    padding: 3px 0;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    
+    &:last-child {
+        border-bottom: none;
+    }
+`
+
+export const Checkout = styled.div`
+    margin-top: 20px;
+    padding: 20px;
+    background: #f2f2f2;
+`
+
+export const ProductImage = styled.div`
+   
+`
+
+export const Image = styled.img`
+    width: 80px;
+    height: 80px;
+    
+`
+
+export const ProductInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Adiciona este estilo */
+  flex: 1; /* Adiciona flex-grow para expandir o espaço disponível */
+`
+
+export const Info = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+`
+
+export const ProductName = styled.span`
+  margin-left: 10;
+  text-align: left;
+  margin-left: 10px;
+`
+
+export const ProductColor = styled.span`
+    font-size: 11px;
+`
+
+export const ProductSize = styled.span`
+    font-size: 11px;
+`
+
+export const SectionPriceAndQuantity = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 70px;
+`
+
+export const Price = styled.span`
+    font-weight: bold;
+    margin-top: 5px;
+`
+
+export const TextQuantity = styled.span`
+`
+
+export const Quantity = styled.span`
+`
+
+export const ProductRemove = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
+export const ButtonCheckout = styled.div`
+    text-transform: uppercase;
+    font-size: 1.0625em;
+    font-weight: bold;
+    background: #00805b;
+    border: none;
+    border-radius: 40px;
+    padding: 7px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+    
 `
 
 export const Background = styled.div`
@@ -162,10 +333,6 @@ export const ContentTableRightSection = styled.div`
     @media (max-width: 1366px) {
         width: 450px;
     }
-`
-
-export const ProductImage = styled.img`
-    width: 70px;
 `
 
 export const Teste = styled.div`
